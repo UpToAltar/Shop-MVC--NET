@@ -1,0 +1,92 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "_LayoutIdentity";
+}
+<!-- Outer Row -->
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                            </div>
+                            <form class="user" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                           id="exampleInputEmail" aria-describedby="emailHelp"
+                                           placeholder="Enter Email Address or UserName..." asp-for="Input.EmailOrUserName" aria-required="true">
+                                    <span asp-validation-for="Input.EmailOrUserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleInputPassword" placeholder="Password" asp-for="Input.Password" aria-required="true">
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small d-flex ">
+                                        <input asp-for="Input.RememberMe"  type="checkbox" class="mr-1">
+                                        <label class="form-label m-0" asp-for="Input.RememberMe">
+                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Login
+                                </button>
+                                <hr>
+                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Login with Google
+                                </a>
+                                <button id="submitButton" type="submit" class="btn btn-facebook btn-user btn-block" name="provider" value="Facebook">
+                                    <i class="fab fa-facebook-f fa-fw"></i>Login with Facebook
+                                </button>
+                                        
+                            </form>
+                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal"></form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" asp-page="./ForgotPassword">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" asp-page="./Register">Create an Account!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("submitButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default button action
+            
+            var form = document.getElementById("external-account");
+            
+            // Create a hidden input element for the button
+            var buttonInput = document.createElement("input");
+            buttonInput.setAttribute("type", "hidden");
+            buttonInput.setAttribute("name", this.name);
+            buttonInput.setAttribute("value", this.value);
+            
+            // Append the hidden input to the form
+            form.appendChild(buttonInput);
+            
+            // Submit the form
+            form.submit();
+        });
+</script>
+        
