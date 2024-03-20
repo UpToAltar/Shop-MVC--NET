@@ -24,6 +24,7 @@ public class Category : Common
     public string? Description { get; set; }
     
     [Display(Name = "Position")]
+    [Required]
     public int? Position {get;set;}
     
     [Column(TypeName = "nvarchar(200)")]
@@ -37,6 +38,8 @@ public class Category : Common
     [Column(TypeName = "nvarchar(250)")]
     [Display(Name = "Seo Keywords")]
     public string? SeoKeywords {get;set;}
+    
+    public bool IsActive {get;set;}
     
     public ICollection<News>? News {get;set;}
     public ICollection<Post>? Posts {get;set;}

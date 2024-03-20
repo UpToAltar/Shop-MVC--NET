@@ -123,12 +123,9 @@
                 {
                     @for (int i = 0; i <= 3; i++)
                     {
-                        var imageNotifite = _context.Users.FirstOrDefault(u => u.Email == Contacts[i].Email).Image ;
-                        if (!string.IsNullOrEmpty(imageNotifite)) imageNotifite = "~/Assets/Admin/img/undraw_profile_1.svg";
-                                                    
                         <a class="dropdown-item d-flex align-items-center" asp-action="Details" asp-area="Contact" asp-controller="Home" asp-route-id="@Contacts[i].Id">
                             <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="@imageNotifite"
+                                <img class="rounded-circle" src="/Assets/Admin/img/undraw_profile_1.svg"
                                      alt="...">
                                 <div class="status-indicator bg-success"></div>
                             </div>

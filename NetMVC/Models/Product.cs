@@ -55,6 +55,8 @@ public class Product : Common
     
     public bool? IsSale { get; set; }
     
+    public bool IsActive {get;set;}
+    
     public Guid? ProductCategoryId { get; set; }
     
     public virtual ProductCategory? ProductCategory { get; set; }

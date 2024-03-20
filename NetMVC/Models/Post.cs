@@ -18,7 +18,7 @@ public class Post : Common
     [Display(Name = "Description")]
     public string? Description { get; set; }
     
-    [Column(TypeName = "nvarchar(250)")]
+    [Column(TypeName = "ntext")]
     [Display(Name = "Detail")]
     public string? Detail { get; set; }
     
@@ -36,6 +36,8 @@ public class Post : Common
     [Column(TypeName = "nvarchar(250)")]
     [Display(Name = "Seo Keywords")]
     public string? SeoKeywords {get;set;}
+    
+    public bool IsActive {get;set;}
     
     public virtual Category? Category {get;set;}
 }

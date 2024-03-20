@@ -6,135 +6,132 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NetMVC.Areas.Category.Models;
 using NetMVC.Models;
 
-namespace NetMVC.Areas.Contact
+namespace NetMVC.Areas.Category.Controllers
 {
-    [Area("Contact")]
-    [Authorize(Roles = "Admin")]
+    [Area("Category")]
+    [Authorize(Roles = "Admin,Manager")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+
         public HomeController(AppDbContext context)
         {
             _context = context;
         }
-        
         [TempData]
         public string StatusMessage { get; set; }
-        
         public const int ITEM_PER_PAGE = 10;
         
         [BindProperty(SupportsGet = true, Name = "pageNumber")]
         public int currentPage { get; set; }
         public int countPage { get; set; }
 
-        
-
-        // GET: Contact/Contact
+        // GET: Category/Home
         public async Task<IActionResult> Index(string? searchString)
         {
-            if(_context.Contacts == null)
+            if(_context.Categories == null)
             {
-                return Problem("Entity set 'AppDbContext.Contacts'  is null.");
+                return Problem("Entity set 'AppDbContext.Categories'  is null.");
             }
 
-            var Contacts = await _context.Contacts.ToListAsync();
-            var AllContacts = Contacts;
+            var categories = await _context.Categories.ToListAsync();
+            var AllCategories = categories;
             
             if (currentPage < 1 || currentPage > countPage)
             {
                 currentPage = 1;
             }
             
-            Contacts = Contacts.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+            categories = categories.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.Position).ToList();
             if (!string.IsNullOrEmpty(searchString))
             {
-                Contacts = AllContacts.Where(u => u.UserName.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+                categories = AllCategories.Where(u => u.Title.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.Title).ToList();
             }
-            countPage = (int)Math.Ceiling((double)Contacts.Count / ITEM_PER_PAGE);
-            var model = new IndexContactModel()
+            countPage = (int)Math.Ceiling((double)categories.Count / ITEM_PER_PAGE);
+            var model = new IndexCategoryModel()
             {
-                contacts = Contacts,
+                categories = categories,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
                 currentPage = currentPage,
                 countPage = countPage,
-                contactsAll = AllContacts
+                categoriesAll = AllCategories
             };
             return View(model);
         }
 
-        // GET: Contact/Contact/Details/5
+        // GET: Category/Home/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.Categories == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (contact == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(category);
         }
 
-        // GET: Contact/Contact/Create
-        [AllowAnonymous]
+        // GET: Category/Home/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contact/Contact/Create
+        // POST: Category/Home/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("UserName,Email,PhoneNumber,Message,CreatedAt,CreatedBy")] Models.Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Position,SeoTitle,SeoDescription,SeoKeywords,IsActive")] NetMVC.Models.Category category)
         {
             if (ModelState.IsValid)
             {
-                contact.Id = Guid.NewGuid();
-                contact.CreatedAt = DateTime.Now;
-                contact.CreatedBy = contact.UserName ?? "Anonymous";
-                _context.Add(contact);
+                category.Id = Guid.NewGuid();
+                category.CreatedAt = DateTime.Now;
+                category.UpdatedAt = DateTime.Now;
+                category.CreatedBy = User.Identity.Name;
+                category.UpdatedBy = User.Identity.Name;
+                _context.Add(category);
+                StatusMessage = "Category has been created.";
                 await _context.SaveChangesAsync();
-                StatusMessage = "Contact created successfully.";
-                return RedirectToAction("Index", "Home", new { area = ""});
+                return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(category);
         }
 
-        // GET: Contact/Contact/Edit/5
+        // GET: Category/Home/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.Categories == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            
-            return View(contact);
+            return View(category);
         }
 
-        // POST: Contact/Contact/Edit/5
+        // POST: Category/Home/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id, UserName,Email,PhoneNumber,Message,CreatedAt,CreatedBy")] Models.Contact contact)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,Position,SeoTitle,SeoDescription,SeoKeywords,IsActive")] NetMVC.Models.Category category)
         {
-            if (id != contact.Id)
+            if (id != category.Id)
             {
                 return NotFound();
             }
@@ -143,13 +140,15 @@ namespace NetMVC.Areas.Contact
             {
                 try
                 {
-                    _context.Update(contact);
+                    category.UpdatedAt = DateTime.Now;
+                    category.UpdatedBy = User.Identity.Name;
+                    _context.Update(category);
+                    StatusMessage = "Category has been updated.";
                     await _context.SaveChangesAsync();
-                    StatusMessage = "Contact updated successfully.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContactExists(contact.Id))
+                    if (!CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -160,50 +159,50 @@ namespace NetMVC.Areas.Contact
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(category);
         }
 
-        // GET: Contact/Contact/Delete/5
+        // GET: Category/Home/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.Categories == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (contact == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(category);
         }
 
-        // POST: Contact/Contact/Delete/5
+        // POST: Category/Home/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.Contacts == null)
+            if (_context.Categories == null)
             {
-                return Problem("Entity set 'AppDbContext.Contacts'  is null.");
+                return Problem("Entity set 'AppDbContext.Categories'  is null.");
             }
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact != null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
             {
-                _context.Contacts.Remove(contact);
+                _context.Categories.Remove(category);
+                StatusMessage = "Category has been deleted.";
             }
             
             await _context.SaveChangesAsync();
-            StatusMessage = "Contact deleted successfully.";
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContactExists(Guid id)
+        private bool CategoryExists(Guid id)
         {
-          return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

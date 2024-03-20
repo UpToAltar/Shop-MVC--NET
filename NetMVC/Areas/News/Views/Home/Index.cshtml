@@ -1,0 +1,83 @@
+@model NetMVC.Areas.Category.Models.IndexNewsModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int number = 0;
+}
+@{
+    // xây dựng Func phát sinh Url từ page ./Index
+    Func<int?,string> generateUrl = (int? pagenumber)  => {
+                                                              return Url.Page("/News/Home", new {pageNumber = pagenumber});
+    };
+
+    var datapaging = new {
+        currentPage = @Model.currentPage,    // trang hiện tại
+        countPages  = @Model.countPage,   // tổng  số trang 
+        generateUrl =  generateUrl
+    };
+}
+<div class="m-3">
+    <h1>LIST CATEGORIES - Total : @Model.newsAll.Count</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.news[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.news[0].Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.news[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.news[0].IsActive)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.news) {
+        number++;
+        <tr>
+            <td>
+                @number
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @if (item.IsActive == true)
+                {
+                    <span class="badge badge-success">Yes</span>
+                }
+                else
+                {
+                    <span class="badge badge-danger">No</span>
+                }
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+        </tbody>
+    </table>
+    <partial name="_Paging" model="@datapaging"/>
+</div>

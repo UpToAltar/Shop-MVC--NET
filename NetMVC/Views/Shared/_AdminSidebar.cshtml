@@ -90,12 +90,13 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Categories -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link" asp-area="Category" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Categories</span></a>
             </li>
+            
             
             <!-- Nav Item - Users -->
             <li class="nav-item">
@@ -106,19 +107,28 @@
             
             <!-- Nav Item - Roles -->
             <li class="nav-item">
-                <a class="nav-link" asp-area="Role" asp-controller="Role" asp-action="Index">
+                <a class="nav-link" asp-area="Role" asp-controller="Home" asp-action="Index">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Roles</span></a>
             </li>
             
             
 
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Contacts -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                <a class="nav-link" asp-area="Contact" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Contacts</span></a>
             </li>
+            
+            <!-- Nav Item - News -->
+            <li class="nav-item">
+                <a class="nav-link" asp-area="News" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>News</span></a>
+            </li>
+            
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

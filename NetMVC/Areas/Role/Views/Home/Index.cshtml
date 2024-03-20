@@ -8,7 +8,7 @@
 @{
     // xây dựng Func phát sinh Url từ page ./Index
     Func<int?,string> generateUrl = (int? pagenumber)  => {
-        return Url.Page("/Role/Role", new {pageNumber = pagenumber});
+        return Url.Page("/Role/Home", new {pageNumber = pagenumber});
     };
 
     var datapaging = new {

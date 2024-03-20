@@ -41,7 +41,11 @@
       <Folder Include="Areas\Admin\Data\" />
       <Folder Include="Areas\Admin\Models\" />
       <Folder Include="Areas\Admin\Views\Shared\" />
+      <Folder Include="Areas\Category\Controllers\" />
+      <Folder Include="Areas\Category\Data\" />
       <Folder Include="Areas\Contact\Data\" />
+      <Folder Include="Areas\News\Controllers\" />
+      <Folder Include="Areas\News\Data\" />
       <Folder Include="Areas\Role\Controllers\" />
       <Folder Include="Areas\Role\Data\" />
       <Folder Include="Areas\User\Data\" />

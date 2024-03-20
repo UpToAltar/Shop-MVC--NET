@@ -63,39 +63,5 @@ public class AppDbContext : IdentityDbContext<AppUser>
             .Property(u => u.Image)
             .HasDefaultValue("https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png");
         
-        modelBuilder.Entity<AppUser>()
-            .Property(u => u.CreatedBy)
-            .HasDefaultValue("Admin");
-        
-        modelBuilder.Entity<AppUser>()
-            .Property(u => u.UpdatedBy)
-            .HasDefaultValue("Admin");
-
-        modelBuilder.Entity<AppUser>()
-            .Property(u => u.CreatedAt)
-            .HasDefaultValue(DateTime.Now);
-        
-        modelBuilder.Entity<AppUser>()
-            .Property(u => u.UpdatedAt)
-            .HasDefaultValue(DateTime.Now);
-
-        //Set default value for Advertisement
-        modelBuilder.Entity<Advertisement>()
-            .Property(u => u.CreatedAt)
-            .HasDefaultValue(DateTime.Now);
-        
-        modelBuilder.Entity<Advertisement>()
-            .Property(u => u.UpdatedAt)
-            .HasDefaultValue(DateTime.Now);
-        
-        //Set default value for Category
-        modelBuilder.Entity<Category>()
-            .Property(u => u.CreatedBy)
-            .HasDefaultValue("Admin");
-        
-        modelBuilder.Entity<Category>()
-            .Property(u => u.UpdatedBy)
-            .HasDefaultValue("Admin");
-        
     }
 }

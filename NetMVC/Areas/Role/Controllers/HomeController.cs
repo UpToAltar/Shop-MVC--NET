@@ -14,12 +14,12 @@ namespace NetMVC.Areas.Role.Controllers
 {
     [Area("Role")]
     [Authorize(Roles = "Admin")]
-    public class RoleController : Controller
+    public class HomeController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AppDbContext _context;
         
-        public RoleController(RoleManager<IdentityRole> roleManager, AppDbContext context)
+        public HomeController(RoleManager<IdentityRole> roleManager, AppDbContext context)
         {
             _roleManager = roleManager;
             _context = context;
@@ -28,7 +28,7 @@ namespace NetMVC.Areas.Role.Controllers
         [TempData]
         public string StatusMessage { get; set; }
         
-        public const int ITEM_PER_PAGE = 5;
+        public const int ITEM_PER_PAGE = 10;
         
         [BindProperty(SupportsGet = true, Name = "pageNumber")]
         public int currentPage { get; set; }

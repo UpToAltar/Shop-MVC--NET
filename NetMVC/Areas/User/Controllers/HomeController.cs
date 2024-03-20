@@ -20,8 +20,7 @@ namespace NetMVC.Areas.User.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly IUploadService _uploadService;
-        [TempData]
-        public string StatusMessage { get; set; }
+        
         public string ImageDefault = "https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png";
 
         public HomeController(AppDbContext context, UserManager<AppUser> userManager, IUploadService uploadService)
@@ -30,8 +29,9 @@ namespace NetMVC.Areas.User.Controllers
             _userManager = userManager;
             _uploadService = uploadService;
         }
-        
-        public const int ITEM_PER_PAGE = 5;
+        [TempData]
+        public string StatusMessage { get; set; }
+        public const int ITEM_PER_PAGE = 10;
         
         [BindProperty(SupportsGet = true, Name = "pageNumber")]
         public int currentPage { get; set; }

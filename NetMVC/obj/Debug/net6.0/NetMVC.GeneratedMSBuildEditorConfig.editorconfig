@@ -8,327 +8,375 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NetMVC
 build_property.RootNamespace = NetMVC
-build_property.ProjectDir = d:\TeamGame\NetMVC\NetMVC\
+build_property.ProjectDir = D:\TeamGame\NetMVC\NetMVC\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\TeamGame\NetMVC\NetMVC
+build_property.MSBuildProjectDirectory = D:\TeamGame\NetMVC\NetMVC
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Roles/Roles.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Roles/Roles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xSb2xlc1xSb2xlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/Home/Index.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Create.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/Home/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcSG9tZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcSG9tZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Category/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Delete.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xIb21lXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Details.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xIb21lXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Edit.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xIb21lXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Index.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Contact/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udGFjdFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Lockout.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Login.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Logout.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Register.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Error.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/LoginFacebook/FacebookCallback.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/LoginFacebook/FacebookCallback.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcTG9naW5GYWNlYm9va1xGYWNlYm9va0NhbGxiYWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Identity/View/LoginFacebook/FacebookCallback.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/Identity/View/LoginFacebook/FacebookCallback.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcVmlld1xMb2dpbkZhY2Vib29rXEZhY2Vib29rQ2FsbGJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Role/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xSb2xlXENyZWF0ZS5jc2h0bWw=
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Role/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xSb2xlXERlbGV0ZS5jc2h0bWw=
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/Home/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xIb21lXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Role/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xSb2xlXEVkaXQuY3NodG1s
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xIb21lXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Role/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xSb2xlXEluZGV4LmNzaHRtbA==
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xIb21lXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/News/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmV3c1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Home/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xIb21lXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xIb21lXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Role/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Create.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Delete.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Details.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Edit.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Index.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/SetPassword/SetPassword.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/SetPassword/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTZXRQYXNzd29yZFxTZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Areas/User/Views/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Home/Index.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Home/Privacy.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/Error.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_AdminSidebar.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_AdminSidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblNpZGViYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_AdminTopBar.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_AdminTopBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblRvcEJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_AlertMessage.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_AlertMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydE1lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_LayoutAdmin.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_LayoutIdentity.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_LayoutIdentity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRJZGVudGl0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_LoginPartial.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_Paging.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_Paging.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_StatusMessage.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0dXNNZXNzYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/_ViewImports.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/_ViewStart.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/TeamGame/NetMVC/NetMVC/Views/Shared/_Layout.cshtml]
+[D:/TeamGame/NetMVC/NetMVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zknkz67ft6

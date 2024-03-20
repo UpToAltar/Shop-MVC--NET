@@ -2,139 +2,136 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NetMVC.Areas.Category.Models;
 using NetMVC.Models;
 
-namespace NetMVC.Areas.Contact
+namespace NetMVC.Areas.News.Controllers
 {
-    [Area("Contact")]
-    [Authorize(Roles = "Admin")]
+    [Area("News")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+
         public HomeController(AppDbContext context)
         {
             _context = context;
         }
-        
+
         [TempData]
         public string StatusMessage { get; set; }
-        
         public const int ITEM_PER_PAGE = 10;
         
         [BindProperty(SupportsGet = true, Name = "pageNumber")]
         public int currentPage { get; set; }
         public int countPage { get; set; }
 
-        
-
-        // GET: Contact/Contact
+        // GET: News/Home
         public async Task<IActionResult> Index(string? searchString)
         {
-            if(_context.Contacts == null)
+            if(_context.News == null)
             {
-                return Problem("Entity set 'AppDbContext.Contacts'  is null.");
+                return Problem("Entity set 'AppDbContext.News'  is null.");
             }
 
-            var Contacts = await _context.Contacts.ToListAsync();
-            var AllContacts = Contacts;
+            var News = await _context.News.ToListAsync();
+            var AllNews = News;
             
             if (currentPage < 1 || currentPage > countPage)
             {
                 currentPage = 1;
             }
             
-            Contacts = Contacts.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+            News = News.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderByDescending(u=> u.CreatedAt).ToList();
             if (!string.IsNullOrEmpty(searchString))
             {
-                Contacts = AllContacts.Where(u => u.UserName.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+                News = AllNews.Where(u => u.Title.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderByDescending(u=> u.CreatedAt).ToList();
             }
-            countPage = (int)Math.Ceiling((double)Contacts.Count / ITEM_PER_PAGE);
-            var model = new IndexContactModel()
+            countPage = (int)Math.Ceiling((double)News.Count / ITEM_PER_PAGE);
+            var model = new IndexNewsModel()
             {
-                contacts = Contacts,
+                news = News,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
                 currentPage = currentPage,
                 countPage = countPage,
-                contactsAll = AllContacts
+                newsAll = AllNews
             };
             return View(model);
         }
+        
 
-        // GET: Contact/Contact/Details/5
+        // GET: News/Home/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.News == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
+            var news = await _context.News
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (contact == null)
+            if (news == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(news);
         }
 
-        // GET: Contact/Contact/Create
-        [AllowAnonymous]
+        // GET: News/Home/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contact/Contact/Create
+        // POST: News/Home/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("UserName,Email,PhoneNumber,Message,CreatedAt,CreatedBy")] Models.Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive")] Models.News news)
         {
             if (ModelState.IsValid)
             {
-                contact.Id = Guid.NewGuid();
-                contact.CreatedAt = DateTime.Now;
-                contact.CreatedBy = contact.UserName ?? "Anonymous";
-                _context.Add(contact);
+                news.Id = Guid.NewGuid();
+                news.CreatedAt = DateTime.Now;
+                news.UpdatedAt = DateTime.Now;
+                news.CreatedBy = User.Identity.Name;
+                news.UpdatedBy = User.Identity.Name;
+                _context.Add(news);
+                StatusMessage = "News has been created.";
                 await _context.SaveChangesAsync();
-                StatusMessage = "Contact created successfully.";
-                return RedirectToAction("Index", "Home", new { area = ""});
+                return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(news);
         }
 
-        // GET: Contact/Contact/Edit/5
+        // GET: News/Home/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.News == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
+            var news = await _context.News.FindAsync(id);
+            if (news == null)
             {
                 return NotFound();
             }
-            
-            return View(contact);
+            return View(news);
         }
 
-        // POST: Contact/Contact/Edit/5
+        // POST: News/Home/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id, UserName,Email,PhoneNumber,Message,CreatedAt,CreatedBy")] Models.Contact contact)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive")] Models.News news)
         {
-            if (id != contact.Id)
+            if (id != news.Id)
             {
                 return NotFound();
             }
@@ -143,13 +140,15 @@ namespace NetMVC.Areas.Contact
             {
                 try
                 {
-                    _context.Update(contact);
+                    news.UpdatedAt = DateTime.Now;
+                    news.UpdatedBy = User.Identity.Name;
+                    _context.Update(news);
+                    StatusMessage = "News has been updated.";
                     await _context.SaveChangesAsync();
-                    StatusMessage = "Contact updated successfully.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContactExists(contact.Id))
+                    if (!NewsExists(news.Id))
                     {
                         return NotFound();
                     }
@@ -160,50 +159,49 @@ namespace NetMVC.Areas.Contact
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(news);
         }
 
-        // GET: Contact/Contact/Delete/5
+        // GET: News/Home/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.News == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
+            var news = await _context.News
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (contact == null)
+            if (news == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(news);
         }
 
-        // POST: Contact/Contact/Delete/5
+        // POST: News/Home/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.Contacts == null)
+            if (_context.News == null)
             {
-                return Problem("Entity set 'AppDbContext.Contacts'  is null.");
+                return Problem("Entity set 'AppDbContext.News'  is null.");
             }
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact != null)
+            var news = await _context.News.FindAsync(id);
+            if (news != null)
             {
-                _context.Contacts.Remove(contact);
+                _context.News.Remove(news);
             }
             
             await _context.SaveChangesAsync();
-            StatusMessage = "Contact deleted successfully.";
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContactExists(Guid id)
+        private bool NewsExists(Guid id)
         {
-          return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.News?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

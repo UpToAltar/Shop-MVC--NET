@@ -1,0 +1,35 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "AppMVC": ""
+  },
+
+  "MailSettings": "",
+  "Authentication": {
+    "Google": {
+      "ClientId": "",
+      "ClientSecret": "",
+      "CallbackPath": ""
+    },
+    "Facebook": {
+      "AppId": "",
+      "AppSecret": "",
+      "CallbackUri": "",
+      "CallbackPath": ""
+    }
+  },
+  "AllowedHosts": "*",
+  "ImageUser": "",
+  "ImageAdmin" : "",
+  "Cloudinary": {
+    "CloudName": "",
+    "ApiKey": "",
+    "ApiSecret": ""
+  }
+
+}
