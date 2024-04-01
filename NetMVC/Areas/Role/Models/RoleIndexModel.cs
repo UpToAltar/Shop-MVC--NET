@@ -2,13 +2,7 @@
 
 public class RoleIndexModel
 {
-    public List<RoleModel> Roles { get; set; }
-    
     public int ITEM_PER_PAGE { get; set; }
-    
-    public int currentPage { get; set; }
-    
-    public int countPage { get; set; }
-    
-    public List<RoleModel> allRoles { get; set; }
+    public int totalRoles { get; set; }
+    public X.PagedList.IPagedList<RoleModel> roles { get; set; }
 }

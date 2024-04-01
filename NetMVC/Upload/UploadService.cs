@@ -42,6 +42,44 @@ public class UploadService : IUploadService
 
         return uploadResult.SecureUrl.AbsoluteUri;
     }
+    
+    public async Task<List<string>> UploadManyFiles(IFormFile[] files)
+    {
+        var cloudinary = new CloudinaryDotNet.Cloudinary(new Account(
+            _cloudinarySettings.CloudName,
+            _cloudinarySettings.ApiKey,
+            _cloudinarySettings.ApiSecret
+        ));
+
+        var uploadResults = new List<string>();
+
+        foreach (var file in files)
+        {
+            var uploadResult = new ImageUploadResult();
+
+            if (file.Length > 0)
+            {
+                using var stream = file.OpenReadStream();
+                var uploadParams = new ImageUploadParams
+                {
+                    File = new FileDescription(file.FileName,stream),
+                    Folder = ".Net-MVC",
+                    UseFilename = true,
+                    UniqueFilename = false,
+                    Overwrite = true
+                };
+                uploadResult = await cloudinary.UploadAsync(uploadParams);
+                if (uploadResult.Error != null)
+                {
+                    throw new Exception(uploadResult.Error.Message);
+                }
+            }
+
+            uploadResults.Add(uploadResult.SecureUrl.AbsoluteUri);
+        }
+
+        return uploadResults;
+    }
 
     public async Task<string> DeleteFile(string url)
     {
@@ -59,5 +97,28 @@ public class UploadService : IUploadService
             throw new Exception(result.Error.Message);
         }
         return result.Result;
+    }
+    
+    public async Task<List<string>> DeleteManyFiles(List<string> urls)
+    {
+        var cloudinary = new CloudinaryDotNet.Cloudinary(new Account(
+            _cloudinarySettings.CloudName,
+            _cloudinarySettings.ApiKey,
+            _cloudinarySettings.ApiSecret
+        ));
+        var deleteResults = new List<string>();
+        foreach (var url in urls)
+        {
+            var format = url.IndexOf(".jpg") > 0 ? url.IndexOf(".jpg") : url.IndexOf(".png");
+            string id = url.Substring(url.IndexOf(".Net-MVC"), format - url.IndexOf(".Net-MVC"));
+            var deleteParams = new DeletionParams(id);
+            var result = await cloudinary.DestroyAsync(deleteParams);
+            if (result.Error != null)
+            {
+                throw new Exception(result.Error.Message);
+            }
+            deleteResults.Add(result.Result);
+        }
+        return deleteResults;
     }
 }

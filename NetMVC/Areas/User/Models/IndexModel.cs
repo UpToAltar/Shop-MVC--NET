@@ -5,9 +5,6 @@ namespace NetMVC.Areas.User.Models;
 public class IndexModel
 {
     public int ITEM_PER_PAGE { get; set; }
-    public int currentPage { get; set; }
-    public int countPage { get; set; }
-    public List<AppUser> users { get; set; }
-    
-    public List<AppUser> usersAll { get; set; }
+    public int totalUsers { get; set; }
+    public X.PagedList.IPagedList<AppUser> users { get; set; }
 }

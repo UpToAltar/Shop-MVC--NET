@@ -1,28 +1,18 @@
 @using Microsoft.AspNetCore.Identity
 @model NetMVC.Areas.User.Models.IndexModel
 @inject UserManager<AppUser> _userManager;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutAdmin";
     int number = 0;
+    var searchStr = Context.Request.Query["searchString"];
 }
-@{
-    // xây dựng Func phát sinh Url từ page ./Index
-    Func<int?,string> generateUrl = (int? pagenumber)  => {
-        return Url.Page("/User/Home", new {pageNumber = pagenumber});
-    };
-
-    var datapaging = new {
-        currentPage = @Model.currentPage,    // trang hiện tại
-        countPages  = @Model.countPage,   // tổng  số trang 
-        generateUrl =  generateUrl
-    };
-}
-
 <partial name="_StatusMessage"/>
 
 <div class="m-3">
-    <h1>LIST USER - Total : @Model.usersAll.Count</h1>
+    <h1>LIST USER - Total : @Model.totalUsers</h1>
     
     <p>
         <a class="btn btn-primary" asp-action="Create">Create New</a>
@@ -31,7 +21,7 @@
         <thead>
         <tr>
             <th>
-                Number
+                #
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.users[0].UserName)
@@ -53,9 +43,10 @@
         @foreach (var item in Model.users)
         {
             number++;
+            var index = number + (Model.users.PageNumber - 1) * Model.users.PageSize;
             <tr>
                 <td>
-                    @number
+                    @index
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
@@ -95,6 +86,8 @@
         }
         </tbody>
     </table>
-    <partial name="_Paging" model="@datapaging"/>
-
+    <div class="m-3 d-flex flex-row-reverse">
+        @Html.PagedListPager(Model.users, page => Url.Action("Index", new { page, searchString = searchStr }))
+    </div>
 </div>
+<script src="~/Assets/JsFunction/SearchPagination.js"></script>

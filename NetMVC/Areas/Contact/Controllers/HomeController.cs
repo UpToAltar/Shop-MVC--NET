@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Models;
+using X.PagedList;
 
 namespace NetMVC.Areas.Contact
 {
@@ -23,43 +24,25 @@ namespace NetMVC.Areas.Contact
         [TempData]
         public string StatusMessage { get; set; }
         
-        public const int ITEM_PER_PAGE = 10;
+        public const int ITEM_PER_PAGE = 5;
         
-        [BindProperty(SupportsGet = true, Name = "pageNumber")]
-        public int currentPage { get; set; }
-        public int countPage { get; set; }
-
-        
-
         // GET: Contact/Contact
-        public async Task<IActionResult> Index(string? searchString)
+        public async Task<IActionResult> Index(string? searchString, int? page)
         {
             if(_context.Contacts == null)
             {
-                return Problem("Entity set 'AppDbContext.Contacts'  is null.");
+                return Problem("Entity set 'AppDbContext.contacts'  is null.");
             }
-
-            var Contacts = await _context.Contacts.ToListAsync();
-            var AllContacts = Contacts;
-            
-            if (currentPage < 1 || currentPage > countPage)
-            {
-                currentPage = 1;
-            }
-            
-            Contacts = Contacts.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+            var contacts = _context.Contacts.OrderBy( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                Contacts = AllContacts.Where(u => u.UserName.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.UserName).ToList();
+                contacts = _context.Contacts.Where(n => n.UserName.Contains(searchString)).OrderBy(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
-            countPage = (int)Math.Ceiling((double)Contacts.Count / ITEM_PER_PAGE);
             var model = new IndexContactModel()
             {
-                contacts = Contacts,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
-                currentPage = currentPage,
-                countPage = countPage,
-                contactsAll = AllContacts
+                totalContacts = await _context.Contacts.CountAsync(),
+                contacts = contacts
             };
             return View(model);
         }
@@ -199,6 +182,33 @@ namespace NetMVC.Areas.Contact
             await _context.SaveChangesAsync();
             StatusMessage = "Contact deleted successfully.";
             return RedirectToAction(nameof(Index));
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> DeleteMany([FromBody]string? data)
+        {
+            if (_context.News == null)
+            {
+                return Json(new { success = false, message = "Entity set 'AppDbContext.Contacts'  is null." });
+            }
+            if(data == null)
+            {
+                return Json(new { success = false, message = "Data is null." });
+            }
+            var ids = data.Split(",");
+            foreach (var id in ids)
+            {
+                if (Guid.TryParse(id, out Guid guid))
+                {
+                    var news = await _context.Contacts.FindAsync(guid);
+                    if (news != null)
+                    {
+                        _context.Contacts.Remove(news);
+                    }
+                }
+            }
+            await _context.SaveChangesAsync();
+            return Json(new { success = true, message = "Delete success." });
         }
 
         private bool ContactExists(Guid id)

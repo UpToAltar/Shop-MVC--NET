@@ -6,6 +6,12 @@ namespace NetMVC.Models;
 [Table("Product")]
 public class Product : Common
 {
+    
+    public Product()
+    {
+        this.ProductImages = new HashSet<ProductImage>();
+        this.OrderDetails = new HashSet<OrderDetail>();
+    }
     [Key]
     public Guid Id { get; set; }
     
@@ -16,24 +22,31 @@ public class Product : Common
     
     [Column(TypeName = "ntext")]
     [Display(Name = "Description")]
+    [Required]
     public string? Description { get; set; }
     
     [Column(TypeName = "nvarchar(200)")]
+    [Required]
     public string? ProductCode { get; set; }
     
     [Column(TypeName = "nvarchar(200)")]
     [Display(Name = "Detail")]
+    [Required]
     public string? Detail { get; set; }
     
     [Column(TypeName = "nvarchar(250)")]
     [Display(Name = "Image")]
+    
     public string? Image { get; set; }
     
-    public decimal? Price { get; set; }
+    [Required]
+    public decimal Price { get; set; } 
     
-    public decimal? PriceSale { get; set; }
+    [Required]
+    public decimal PriceSale { get; set; } 
     
-    public int? Quantity { get; set; }
+    [Required]
+    public int Quantity { get; set; }
     
     [Column(TypeName = "nvarchar(200)")]
     [Display(Name = "Seo Title")]
@@ -46,18 +59,22 @@ public class Product : Common
     [Column(TypeName = "nvarchar(250)")]
     [Display(Name = "Seo Keywords")]
     public string? SeoKeywords {get;set;}
+
+    public bool IsFeature { get; set; } = false;
     
-    public bool? IsFeature { get; set; }
+    public bool IsHot { get; set; } = false;
     
-    public bool? IsHot { get; set; }
+    public bool IsHome { get; set; } = false;
     
-    public bool? IsHome { get; set; }
-    
-    public bool? IsSale { get; set; }
+    public bool IsSale { get; set; } = false;
     
     public bool IsActive {get;set;}
     
+    [Required]
     public Guid? ProductCategoryId { get; set; }
     
     public virtual ProductCategory? ProductCategory { get; set; }
+    public virtual ICollection<ProductImage>? ProductImages { get; set; }
+    
+    public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Areas.Role.Models;
 using NetMVC.Models;
+using X.PagedList;
 
 namespace NetMVC.Areas.Role.Controllers
 {
@@ -28,21 +29,23 @@ namespace NetMVC.Areas.Role.Controllers
         [TempData]
         public string StatusMessage { get; set; }
         
-        public const int ITEM_PER_PAGE = 10;
-        
-        [BindProperty(SupportsGet = true, Name = "pageNumber")]
-        public int currentPage { get; set; }
-        public int countPage { get; set; }
-        
+        public const int ITEM_PER_PAGE = 5;
         public CreateRoleModel CreateRoleModel { get; set; } = default!;
         
-        public List<RoleModel> Roles { get; set; }
         // GET: Role
-        public async Task<IActionResult> Index(string? searchString)
+        public async Task<IActionResult> Index(string? searchString ,int? page)
         {
-            var roles = await _roleManager.Roles.OrderBy(r => r.Name).ToListAsync();
-            countPage = (int)Math.Ceiling((double)roles.Count / ITEM_PER_PAGE);
-            Roles = new List<RoleModel>();
+            if(_context.Roles == null)
+            {
+                return Problem("Entity set 'AppDbContext.roles'  is null.");
+            }
+
+            var roles = _context.Roles.OrderBy(n => n.Name).ToList();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                roles = _context.Roles.Where(n => n.Name.Contains(searchString)).OrderBy(n => n.Name).ToList();
+            }
+            var roleModels = new List<RoleModel>();
             foreach (var role in roles)
             {
                 var roleModel = new RoleModel
@@ -51,30 +54,18 @@ namespace NetMVC.Areas.Role.Controllers
                     Name = role.Name,
                     Claims = (await _roleManager.GetClaimsAsync(role)).Select(c => $"{c.Type} = {c.Value}").ToList()
                 };
-                Roles.Add(roleModel);
+                roleModels.Add(roleModel);
             }
-
-            var allRoles = Roles;
-            if (currentPage < 1 || currentPage > countPage)
-            {
-                currentPage = 1;
-            }
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                Roles = Roles.Where(r => r.Name.Contains(searchString)).ToList();
-            }
-            Roles = Roles.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).ToList();
-
             var model = new RoleIndexModel()
             {
-                Roles = Roles,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
-                currentPage = currentPage,
-                countPage = countPage,
-                allRoles = allRoles
+                totalRoles = await _context.Roles.CountAsync(),
+                roles = roleModels.ToPagedList(page ?? 1, ITEM_PER_PAGE)
             };
-                
             return View(model);
+            
+
+            
         }
         
         // GET: Role/Create

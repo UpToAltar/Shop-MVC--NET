@@ -34,6 +34,8 @@
       </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
       <PackageReference Include="MimeKit" Version="4.3.0" />
+      <PackageReference Include="X.PagedList" Version="9.1.2" />
+      <PackageReference Include="X.PagedList.Mvc.Core" Version="9.1.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -46,12 +48,27 @@
       <Folder Include="Areas\Contact\Data\" />
       <Folder Include="Areas\News\Controllers\" />
       <Folder Include="Areas\News\Data\" />
+      <Folder Include="Areas\Posts\Data\" />
+      <Folder Include="Areas\Product\Data\" />
+      <Folder Include="Areas\ProductCategories\Data\" />
       <Folder Include="Areas\Role\Controllers\" />
       <Folder Include="Areas\Role\Data\" />
       <Folder Include="Areas\User\Data\" />
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Areas\Posts\Views\Home\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Posts\Views\Home\Delete.cshtml" />
+      <AdditionalFiles Include="Areas\Posts\Views\Home\Details.cshtml" />
+      <AdditionalFiles Include="Areas\Posts\Views\Home\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\Posts\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Posts\Views\_ViewImports.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\Home\Create.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\Home\Delete.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\Home\Details.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\Home\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Areas\ProductCategories\Views\_ViewImports.cshtml" />
       <AdditionalFiles Include="Areas\User\Views\Roles\Roles.cshtml" />
     </ItemGroup>
 

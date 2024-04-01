@@ -1,25 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using X.PagedList.Mvc.Core
 @model NetMVC.Areas.Role.Models.RoleIndexModel
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutAdmin";
-    int roleNumber = 1;
+    int number = 0;
+    var searchStr = Context.Request.Query["searchString"];
 }
-@{
-    // xây dựng Func phát sinh Url từ page ./Index
-    Func<int?,string> generateUrl = (int? pagenumber)  => {
-        return Url.Page("/Role/Home", new {pageNumber = pagenumber});
-    };
 
-    var datapaging = new {
-        currentPage = @Model.currentPage,    // trang hiện tại
-        countPages  = @Model.countPage,   // tổng  số trang 
-        generateUrl =  generateUrl
-    };
-}
 <partial name="_StatusMessage"/>
 <div class="m-3">
-    <h1>LIST ROLE - TOTAL : @Model.allRoles.Count</h1>
+    <h1>LIST ROLE - TOTAL : @Model.totalRoles</h1>
     
     <p>
         <a class="btn btn-primary" asp-action="Create">Create New</a>
@@ -29,7 +20,7 @@
         <thead>
         <tr>
             <th>
-                Number
+                #
             </th>
             <th>
                 Role Name
@@ -43,10 +34,12 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model.Roles) {
+        @foreach (var item in Model.roles) {
+            number++;
+            var index = number + (Model.roles.PageNumber - 1) * Model.roles.PageSize;
             <tr>
                 <td>
-                    @roleNumber.ToString()
+                    @index
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -63,11 +56,12 @@
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
-            roleNumber++;
         }
         </tbody>
     </table>
-    <partial name="_Paging" model="@datapaging"/>
-
+    <div class="m-3 d-flex flex-row-reverse">
+        @Html.PagedListPager(Model.roles, page => Url.Action("Index", new { page, searchString = searchStr }))
+    </div>
 </div>
+<script src="~/Assets/JsFunction/SearchPagination.js"></script>
 

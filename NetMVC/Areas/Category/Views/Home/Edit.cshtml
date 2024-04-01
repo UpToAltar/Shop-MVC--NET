@@ -51,6 +51,19 @@
                 <span asp-validation-for="@Model.IsActive" class="text-danger"></span>
 
             </div>
+            <div class="form-group d-none">
+                <label asp-for="@Model.CreatedAt" class="control-label"></label>
+                <input asp-for="@Model.CreatedAt" class="form-control"/>
+                <span asp-validation-for="@Model.CreatedAt" class="text-danger"></span>
+            
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="@Model.CreatedBy" class="control-label"></label>
+                <input asp-for="@Model.CreatedBy" class="form-control"/>
+                <span asp-validation-for="@Model.CreatedBy" class="text-danger"></span>
+            
+            </div>
+            
             
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-success" />

@@ -16,10 +16,12 @@ public class Post : Common
     
     [Column(TypeName = "nvarchar(250)")]
     [Display(Name = "Description")]
+    [Required]
     public string? Description { get; set; }
     
     [Column(TypeName = "ntext")]
     [Display(Name = "Detail")]
+    [Required]
     public string? Detail { get; set; }
     
     [Display(Name = "Image")]

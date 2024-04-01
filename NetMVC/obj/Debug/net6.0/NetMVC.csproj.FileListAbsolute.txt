@@ -296,3 +296,5 @@ D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\Cloudinary.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\CloudinaryDotNet.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\Facebook.dll
 d:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\app.settings.example.json
+D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.dll
+D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

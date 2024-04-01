@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O4jycJdpuzwny2CFF0IyiJSQ0nN9CWdHyiJvz46/ucKF9BN2DVlXK4bKfhqTZYmw3eFOtqb5sauecxuANQ+KcQ==",
+  "dgSpecHash": "q6tLvTy2FQrALREgflw7oFpaCmoEf5FfJEo3vnlpxNV2xYiapS6vsulmulHgQL4rAFoYRQBYZRVuUL3YjQe+Hw==",
   "success": true,
   "projectFilePath": "D:\\TeamGame\\NetMVC\\NetMVC\\NetMVC.csproj",
   "expectedPackageFiles": [
@@ -265,7 +265,9 @@
     "C:\\Users\\Quman\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Quman\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Quman\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Quman\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Quman\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Quman\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
+    "C:\\Users\\Quman\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
   ],
   "logs": [
     {

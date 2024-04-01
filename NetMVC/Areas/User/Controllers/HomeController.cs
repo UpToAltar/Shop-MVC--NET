@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using NetMVC.Areas.User.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
+using X.PagedList;
 
 namespace NetMVC.Areas.User.Controllers
 {
@@ -31,41 +32,25 @@ namespace NetMVC.Areas.User.Controllers
         }
         [TempData]
         public string StatusMessage { get; set; }
-        public const int ITEM_PER_PAGE = 10;
-        
-        [BindProperty(SupportsGet = true, Name = "pageNumber")]
-        public int currentPage { get; set; }
-        public int countPage { get; set; }
+        public const int ITEM_PER_PAGE = 5;
 
         // GET: User/
-        public async Task<IActionResult> Index([FromQuery] string? searchString)
+        public async Task<IActionResult> Index(string? searchString, int? page)
         {
             if(_context.Users == null)
             {
-                return Problem("Entity set 'AppDbContext.Users'  is null.");
+                return Problem("Entity set 'AppDbContext.users'  is null.");
             }
-
-            var users = await _userManager.Users.ToListAsync();
-            var allUsers = users;
-            
-            if (currentPage < 1 || currentPage > countPage)
-            {
-                currentPage = 1;
-            }
-            
-            users = users.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderByDescending(u=> u.UserName).ToList();
+            var users = _context.Users.OrderBy( n => n.UserName).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                users = allUsers.Where(u => u.UserName.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderByDescending(u=> u.UserName).ToList();
+                users = _context.Users.Where(n => n.UserName.Contains(searchString)).OrderBy(n => n.UserName).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
-            countPage = (int)Math.Ceiling((double)users.Count / ITEM_PER_PAGE);
-            var model = new IndexModel()
+            var model = new IndexModel
             {
-                users = users,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
-                currentPage = currentPage,
-                countPage = countPage,
-                usersAll = allUsers
+                totalUsers = await _context.Users.CountAsync(),
+                users = users
             };
             return View(model);
         }
@@ -242,6 +227,10 @@ namespace NetMVC.Areas.User.Controllers
             var user = await _context.Users.FindAsync(id.ToString());
             if (user != null)
             {
+                if(user.Image != null)
+                {
+                    await _uploadService.DeleteFile(user.Image);
+                }
                 _context.Users.Remove(user);
             }
             

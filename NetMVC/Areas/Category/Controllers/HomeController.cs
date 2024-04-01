@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Areas.Category.Models;
 using NetMVC.Models;
+using X.PagedList;
 
 namespace NetMVC.Areas.Category.Controllers
 {
@@ -23,41 +24,25 @@ namespace NetMVC.Areas.Category.Controllers
         }
         [TempData]
         public string StatusMessage { get; set; }
-        public const int ITEM_PER_PAGE = 10;
-        
-        [BindProperty(SupportsGet = true, Name = "pageNumber")]
-        public int currentPage { get; set; }
-        public int countPage { get; set; }
+        public const int ITEM_PER_PAGE = 5;
 
         // GET: Category/Home
-        public async Task<IActionResult> Index(string? searchString)
+        public async Task<IActionResult> Index(string? searchString ,int? page)
         {
             if(_context.Categories == null)
             {
-                return Problem("Entity set 'AppDbContext.Categories'  is null.");
+                return Problem("Entity set 'AppDbContext.categories'  is null.");
             }
-
-            var categories = await _context.Categories.ToListAsync();
-            var AllCategories = categories;
-            
-            if (currentPage < 1 || currentPage > countPage)
-            {
-                currentPage = 1;
-            }
-            
-            categories = categories.Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.Position).ToList();
+            var categories = _context.Categories.OrderBy( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                categories = AllCategories.Where(u => u.Title.Contains(searchString)).Skip((currentPage - 1) * ITEM_PER_PAGE).Take(ITEM_PER_PAGE).OrderBy(u=> u.Title).ToList();
+                categories = _context.Categories.Where(n => n.Title.Contains(searchString)).OrderBy(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
-            countPage = (int)Math.Ceiling((double)categories.Count / ITEM_PER_PAGE);
             var model = new IndexCategoryModel()
             {
-                categories = categories,
                 ITEM_PER_PAGE = ITEM_PER_PAGE,
-                currentPage = currentPage,
-                countPage = countPage,
-                categoriesAll = AllCategories
+                totalCategories = await _context.Categories.CountAsync(),
+                categories = categories
             };
             return View(model);
         }
@@ -129,7 +114,7 @@ namespace NetMVC.Areas.Category.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,Position,SeoTitle,SeoDescription,SeoKeywords,IsActive")] NetMVC.Models.Category category)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,Position,SeoTitle,SeoDescription,SeoKeywords,IsActive,CreatedAt,CreatedBy")] NetMVC.Models.Category category)
         {
             if (id != category.Id)
             {

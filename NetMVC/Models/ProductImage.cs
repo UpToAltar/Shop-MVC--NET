@@ -14,5 +14,7 @@ public class ProductImage
     [Column(TypeName = "nvarchar(250)")]
     public string? Image { get; set; }
     
-    public bool? IsDefault { get; set; }
+    public bool IsDefault { get; set; }
+    
+    public virtual Product? Product {get;set;}
 }

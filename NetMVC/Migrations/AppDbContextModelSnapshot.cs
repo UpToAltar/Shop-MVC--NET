@@ -199,7 +199,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Advertisement");
+                    b.ToTable("Advertisement", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.AppUser", b =>
@@ -328,7 +328,7 @@ namespace NetMVC.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
@@ -359,7 +359,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.Contact", b =>
@@ -394,7 +394,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.News", b =>
@@ -413,15 +413,17 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Detail")
+                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
@@ -450,7 +452,7 @@ namespace NetMVC.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("News");
+                    b.ToTable("News", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.Order", b =>
@@ -497,7 +499,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.OrderDetail", b =>
@@ -524,7 +526,7 @@ namespace NetMVC.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetail", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.Post", b =>
@@ -543,15 +545,17 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Detail")
+                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
@@ -580,7 +584,7 @@ namespace NetMVC.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Post", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.Product", b =>
@@ -596,36 +600,40 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<string>("Detail")
+                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsFeature")
+                    b.Property<bool>("IsFeature")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsHome")
+                    b.Property<bool>("IsHome")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsHot")
+                    b.Property<bool>("IsHot")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsSale")
+                    b.Property<bool>("IsSale")
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("Price")
+                        .IsRequired()
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("PriceSale")
+                        .IsRequired()
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid?>("ProductCategoryId")
@@ -635,6 +643,7 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int?>("Quantity")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("SeoDescription")
@@ -660,7 +669,7 @@ namespace NetMVC.Migrations
 
                     b.HasIndex("ProductCategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.ProductCategory", b =>
@@ -705,7 +714,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductCategory");
+                    b.ToTable("ProductCategory", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.ProductImage", b =>
@@ -717,7 +726,7 @@ namespace NetMVC.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<bool?>("IsDefault")
+                    b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
 
                     b.Property<Guid>("ProductId")
@@ -725,7 +734,9 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductImage");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImage", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.Subcribe", b =>
@@ -743,7 +754,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subcribe");
+                    b.ToTable("Subcribe", (string)null);
                 });
 
             modelBuilder.Entity("NetMVC.Models.SystemSetting", b =>
@@ -760,7 +771,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("SettingKey");
 
-                    b.ToTable("SystemSetting");
+                    b.ToTable("SystemSetting", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -832,7 +843,7 @@ namespace NetMVC.Migrations
                         .IsRequired();
 
                     b.HasOne("NetMVC.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -860,6 +871,17 @@ namespace NetMVC.Migrations
                     b.Navigation("ProductCategory");
                 });
 
+            modelBuilder.Entity("NetMVC.Models.ProductImage", b =>
+                {
+                    b.HasOne("NetMVC.Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("NetMVC.Models.Category", b =>
                 {
                     b.Navigation("News");
@@ -870,6 +892,13 @@ namespace NetMVC.Migrations
             modelBuilder.Entity("NetMVC.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("NetMVC.Models.Product", b =>
+                {
+                    b.Navigation("OrderDetails");
+
+                    b.Navigation("ProductImages");
                 });
 
             modelBuilder.Entity("NetMVC.Models.ProductCategory", b =>
