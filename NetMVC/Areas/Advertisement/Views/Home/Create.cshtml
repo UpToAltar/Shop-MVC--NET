@@ -1,0 +1,65 @@
+@model NetMVC.Models.Advertisement
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="m-3">
+    <h1>Create</h1>
+    
+    <h4>Advertisements</h4>
+    <hr />
+    <form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="row">
+        
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                               
+                <div class="row">
+                    <div class="col">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" name="file" type="file" id="formFile">
+                    </div>
+                    <div class="col display-image">
+                    </div>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>               
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label"></label>
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a class="btn-primary btn" asp-action="Index">Back to List</a>
+            </div>
+            
+        </div>
+    </div>
+    </form>
+</div>
+

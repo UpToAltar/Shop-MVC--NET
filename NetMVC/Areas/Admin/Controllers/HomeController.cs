@@ -10,7 +10,7 @@ using NetMVC.Models;
 namespace NetMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;

@@ -227,7 +227,7 @@ namespace NetMVC.Areas.User.Controllers
             var user = await _context.Users.FindAsync(id.ToString());
             if (user != null)
             {
-                if(user.Image != null)
+                if(user.Image != null && user.Image != "https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png")
                 {
                     await _uploadService.DeleteFile(user.Image);
                 }

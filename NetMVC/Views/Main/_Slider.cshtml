@@ -1,0 +1,78 @@
+﻿@model List<Advertisement>
+
+@if (Model.Count > 0)
+{
+    <div id="slider-container">
+        @foreach (var item in Model)
+        {
+            <div class="main_slider" style="background-image:url(@item.Image)">
+                <div class="container fill_height">
+                    <div class="row align-items-center fill_height">
+                        <div class="col">
+                            <div class="main_slider_content">
+                                @if (!string.IsNullOrEmpty(item.Title))
+                                {
+                                    <h6>@item.Title</h6>
+                                }
+                                @if (!string.IsNullOrEmpty(item.Description))
+                                {
+                                    <h1>@item.Description</h1>
+                                }
+                                
+                                @if (!string.IsNullOrEmpty(item.Link))
+                                {
+                                    <div class="red_button shop_now_button"><a style="cursor: pointer;color: #fff" href="@Model[0].Link">shop now</a></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="main_slider" style="background-image:url(Assets/Main/images/slider_1.jpg)">
+        <div class="container fill_height">
+            <div class="row align-items-center fill_height">
+                <div class="col">
+                    <div class="main_slider_content">
+                        <h6>Spring / Summer Collection 2017</h6>
+                        <h1>Get up to 30% Off New Arrivals</h1>
+                        <div class="red_button shop_now_button"><a href="#">shop now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var sliders = document.querySelectorAll(".main_slider");
+    var currentSlide = 0;
+
+    function showSlide(index) {
+        for (var i = 0; i < sliders.length; i++) {
+            sliders[i].style.display = "none";
+        }
+        sliders[index].style.display = "block";
+    }
+
+    function nextSlide() {
+        currentSlide++;
+        if (currentSlide >= sliders.length) {
+            currentSlide = 0;
+        }
+        showSlide(currentSlide);
+    }
+
+    function startSlider() {
+        setInterval(nextSlide, 3000);
+    }
+
+    showSlide(currentSlide);
+    startSlider();
+});
+</script>

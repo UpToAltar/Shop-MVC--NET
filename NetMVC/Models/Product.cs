@@ -60,7 +60,7 @@ public class Product : Common
     [Display(Name = "Seo Keywords")]
     public string? SeoKeywords {get;set;}
 
-    public bool IsFeature { get; set; } = false;
+    public bool IsNew { get; set; } = false;
     
     public bool IsHot { get; set; } = false;
     

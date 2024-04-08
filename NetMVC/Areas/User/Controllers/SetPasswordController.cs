@@ -59,18 +59,13 @@ public class SetPasswordController : Controller
         [Bind("Id,Password,UserName,Email,Image,Address,Job,ConfirmedPassword")]
         SetPassModel setPassModel)
     {
-        if(_context.Users == null)
-        {
-            return Problem("Entity set 'AppDbContext.Users'  is null.");
-        }
-
         if (ModelState.IsValid)
         {
             
             var user = await _userManager.FindByIdAsync(setPassModel.Id);
             if (user != null)
             {
-                var deletePass = await _userManager.RemovePasswordAsync(user);
+                var deletePass = user.PasswordHash != null ? await _userManager.RemovePasswordAsync(user) : IdentityResult.Success;
                 if (deletePass.Succeeded)
                 {
                     var addPass = await _userManager.AddPasswordAsync(user, setPassModel.Password);
@@ -87,6 +82,7 @@ public class SetPasswordController : Controller
                 }
             }
         }
+        StatusMessage = "Error: Password not updated.";
         return View(setPassModel);
     }
 }

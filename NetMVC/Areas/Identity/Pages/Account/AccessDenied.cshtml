@@ -1,10 +1,20 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore
 @model AccessDeniedModel
+@inject UserManager<AppUser> _userManager;
 @{
     ViewData["Title"] = "Access denied";
+    var user = await _userManager.GetUserAsync(User);
+    var roles = await _userManager.GetRolesAsync(user);
+    if(roles.Contains("Admin") || roles.Contains("Manager"))
+    {
+        Layout = "_LayoutAdmin";
+    }
 }
 
 <header>
-    <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
+    <div class="m-3">
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+            <p class="text-danger">You do not have access to this resource.</p>
+    </div>
 </header>

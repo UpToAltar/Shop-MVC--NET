@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Products.Controllers
 {
     [Area("Product")]
+    [Authorize(Roles = "Admin,Manager")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -125,7 +127,7 @@ namespace NetMVC.Areas.Products.Controllers
                                 Id = Guid.NewGuid(),
                                 Image = img,
                                 ProductId = product.Id,
-                                IsDefault = true
+                                IsDefault = false
                             });
                         }
                         product.ProductImages = productImages;
@@ -219,7 +221,7 @@ namespace NetMVC.Areas.Products.Controllers
                                     Id = Guid.NewGuid(),
                                     Image = img,
                                     ProductId = product.Id,
-                                    IsDefault = true
+                                    IsDefault = false
                                 });
                             }
 

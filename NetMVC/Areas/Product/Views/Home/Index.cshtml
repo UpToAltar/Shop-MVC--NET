@@ -69,7 +69,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
-                <td>
+                <td class="d-price">
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
@@ -95,12 +95,8 @@
         @Html.PagedListPager(Model.products, page => Url.Action("Index", new { page, searchString = searchStr }))
     </div>
 </div>
-<div id="overlay" class="d-none">
-    <div class="loader-wrap">
-        <div class="loader"></div>
-    </div>
-</div>
+
+@* notification toast *@
 <div id="notiToast"></div>
-<script src="~/Assets/JsFunction/SelectAllToDelete.js"></script>
-<script src="~/Assets/JsFunction/SearchPagination.js"></script>
+
 

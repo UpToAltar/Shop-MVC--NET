@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Models;
 using NetMVC.UpLoad;
@@ -6,6 +7,7 @@ using NetMVC.UpLoad;
 namespace NetMVC.Areas.Products.Controllers;
 
 [Area("Product")]
+[Authorize(Roles = "Admin,Manager")]
 public class MoreImageController : Controller
 {
     private readonly AppDbContext _context;
@@ -27,6 +29,24 @@ public class MoreImageController : Controller
         _context.ProductImages.Remove(img);
         await _uploadService.DeleteFile(img.Image);
             
+        await _context.SaveChangesAsync();
+        return Json(new{success = true});
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> SetDefault([FromBody] string? id)
+    {
+        var oldDefault = await _context.ProductImages.FirstOrDefaultAsync(i => i.IsDefault == true);
+        if (oldDefault != null)
+        {
+            oldDefault.IsDefault = false;
+        }
+        var newDefault = await _context.ProductImages.FirstOrDefaultAsync(i => i.Id.ToString() == id);
+        if (newDefault == null)
+        {
+            return Json(new { success = false});
+        }
+        newDefault.IsDefault = true;
         await _context.SaveChangesAsync();
         return Json(new{success = true});
     }

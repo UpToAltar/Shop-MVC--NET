@@ -57,12 +57,12 @@
                     </div>
                     <div>
                         <label asp-for="Price" class="control-label"></label>
-                        <input style="width: 90%" asp-for="Price" class="form-control"/>
+                        <input style="width: 90%" asp-for="Price" class="form-control numeric numeric-price"/>
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div>
                         <label asp-for="PriceSale" class="control-label"></label>
-                        <input style="width: 90%" asp-for="PriceSale" class="form-control"/>
+                        <input style="width: 90%" asp-for="PriceSale" class="form-control numeric numeric-sale"/>
                         <span asp-validation-for="PriceSale" class="text-danger"></span>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                         <span asp-validation-for="IsHome" class="text-danger"></span>
                     </div>
                     <div>
-                        <input asp-for="IsFeature" class="form-check-input"/>
-                        <label asp-for="IsFeature" class="control-label"></label>
-                        <span asp-validation-for="IsFeature" class="text-danger"></span>
+                        <input asp-for="IsNew" class="form-check-input"/>
+                        <label asp-for="IsNew" class="control-label"></label>
+                        <span asp-validation-for="IsNew" class="text-danger"></span>
                     </div>
                 
                     <div>
@@ -170,7 +170,4 @@
     </form>
 </div>
 
-<script src="~/Assets/JsFunction/showMenuClick.js"></script>
-<script src="~/Assets/JsFunction/DisplayImage.js"></script>
-<script src="~/Assets/JsFunction/DisplayManyImage.js"></script>
 

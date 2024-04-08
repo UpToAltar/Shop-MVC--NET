@@ -12,7 +12,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Contact
 {
     [Area("Contact")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
