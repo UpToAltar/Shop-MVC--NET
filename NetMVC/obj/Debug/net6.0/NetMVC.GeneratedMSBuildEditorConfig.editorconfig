@@ -15,6 +15,42 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\TeamGame\NetMVC\NetMVC
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXEhvbWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/Home/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXEhvbWVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXEhvbWVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXEhvbWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Policy/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9saWN5XFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TeamGame/NetMVC/NetMVC/Areas/Posts/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUG9zdHNcVmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
@@ -405,6 +441,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUm9sZVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TeamGame/NetMVC/NetMVC/Areas/Subscriber/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3Vic2NyaWJlclxWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Subscriber/Views/Home/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3Vic2NyaWJlclxWaWV3c1xIb21lXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Subscriber/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3Vic2NyaWJlclxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Areas/Subscriber/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3Vic2NyaWJlclxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TeamGame/NetMVC/NetMVC/Areas/User/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -433,6 +485,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TeamGame/NetMVC/NetMVC/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Views/Home/DetailProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TeamGame/NetMVC/NetMVC/Views/Home/Error404.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -441,8 +501,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TeamGame/NetMVC/NetMVC/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/TeamGame/NetMVC/NetMVC/Views/Home/Shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG9wLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TeamGame/NetMVC/NetMVC/Views/Main/_ArrivalCategory.cshtml]
@@ -451,6 +511,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/TeamGame/NetMVC/NetMVC/Views/Main/_BestSeller.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxfQmVzdFNlbGxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Views/Main/_Blog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxfQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Views/Main/_Deal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxfRGVhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TeamGame/NetMVC/NetMVC/Views/Main/_Footer.cshtml]
@@ -463,6 +531,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/TeamGame/NetMVC/NetMVC/Views/Main/_MenuTop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxfTWVudVRvcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TeamGame/NetMVC/NetMVC/Views/Main/_Policy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxfUG9saWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TeamGame/NetMVC/NetMVC/Views/Main/_Product.cshtml]

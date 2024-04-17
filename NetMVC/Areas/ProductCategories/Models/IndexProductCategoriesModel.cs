@@ -1,4 +1,4 @@
-﻿namespace NetMVC.Areas.Category.Models;
+﻿namespace NetMVC.Areas.ProductCategories.Models;
 
 public class IndexProductCategoriesModel
 {

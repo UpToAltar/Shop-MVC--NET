@@ -9,7 +9,7 @@ using NetMVC.Models;
 namespace NetMVC.Areas.User.Controllers;
 
 [Area("User")]
-[Authorize(Roles = "Admin,Manager")]
+[Authorize(Roles = $"{BaseRole.Admin}")]
 public class SetPasswordController : Controller
 {
     private readonly AppDbContext _context;

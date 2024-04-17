@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetMVC.Areas.Category.Models;
+using NetMVC.Areas.News.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
 using X.PagedList;
@@ -14,7 +13,7 @@ using X.PagedList;
 namespace NetMVC.Areas.News.Controllers
 {
     [Area("News")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -81,7 +80,7 @@ namespace NetMVC.Areas.News.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,Title,Description,Detail,SeoTitle,SeoDescription,SeoKeywords,IsActive")] Models.News news,
+            [Bind("Id,Title,Description,Detail,SeoTitle,SeoDescription,SeoKeywords,IsActive")] NetMVC.Models.News news,
             IFormFile? file)
         {
             if (ModelState.IsValid)
@@ -129,7 +128,7 @@ namespace NetMVC.Areas.News.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,IFormFile? file,
-            [Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive,CreatedAt,CreatedBy")] Models.News news)
+            [Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive,CreatedAt,CreatedBy")] NetMVC.Models.News news)
         {
             if (id != news.Id)
             {

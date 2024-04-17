@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetMVC.Areas.Category.Models;
+using NetMVC.Areas.Posts.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
 using X.PagedList;
@@ -14,7 +14,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Posts.Controllers
 {
     [Area("Posts")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -81,7 +81,7 @@ namespace NetMVC.Areas.Posts.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,Title,Description,Detail,SeoTitle,SeoDescription,SeoKeywords,IsActive")] Models.Post posts,
+            [Bind("Id,Title,Description,Detail,SeoTitle,SeoDescription,SeoKeywords,IsActive")] Post posts,
             IFormFile? file)
         {
             if (ModelState.IsValid)
@@ -129,7 +129,7 @@ namespace NetMVC.Areas.Posts.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,IFormFile? file,
-            [Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive,CreatedAt,CreatedBy")] Models.Post posts)
+            [Bind("Id,Title,Description,Detail,Image,SeoTitle,SeoDescription,SeoKeywords,IsActive,CreatedAt,CreatedBy")] Post posts)
         {
             if (id != posts.Id)
             {

@@ -29,7 +29,7 @@ public class Product : Common
     [Required]
     public string? ProductCode { get; set; }
     
-    [Column(TypeName = "nvarchar(200)")]
+    [Column(TypeName = "ntext")]
     [Display(Name = "Detail")]
     [Required]
     public string? Detail { get; set; }

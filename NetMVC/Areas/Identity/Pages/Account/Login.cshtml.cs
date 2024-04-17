@@ -137,7 +137,7 @@ namespace NetMVC.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Wrong password or email | username.");
                     return Page();
                 }
             }

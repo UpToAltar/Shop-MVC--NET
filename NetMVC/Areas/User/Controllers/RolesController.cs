@@ -7,7 +7,7 @@ using NetMVC.Models;
 namespace NetMVC.Areas.User.Controllers;
 
 [Area("User")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = $"{BaseRole.Admin}")]
 public class RolesController : Controller
 {
     private readonly AppDbContext _context;

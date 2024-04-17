@@ -1,4 +1,4 @@
-﻿namespace NetMVC.Areas.Category.Models;
+﻿namespace NetMVC.Areas.Advertisements.Models;
 
 public class IndexAdvertisementsModel
 {

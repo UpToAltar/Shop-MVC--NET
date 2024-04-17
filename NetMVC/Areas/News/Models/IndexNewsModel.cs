@@ -1,4 +1,4 @@
-﻿namespace NetMVC.Areas.Category.Models;
+﻿namespace NetMVC.Areas.News.Models;
 
 public class IndexNewsModel
 {

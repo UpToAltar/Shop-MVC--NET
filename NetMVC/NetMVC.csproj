@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
       <PackageReference Include="Bogus" Version="35.4.0" />
       <PackageReference Include="Cloudinary" Version="0.0.5" />
       <PackageReference Include="CloudinaryDotNet" Version="1.26.0" />
@@ -49,16 +50,24 @@
       <Folder Include="Areas\Contact\Data\" />
       <Folder Include="Areas\News\Controllers\" />
       <Folder Include="Areas\News\Data\" />
+      <Folder Include="Areas\Policy\Data\" />
       <Folder Include="Areas\Posts\Data\" />
       <Folder Include="Areas\Product\Data\" />
       <Folder Include="Areas\ProductCategories\Data\" />
       <Folder Include="Areas\Role\Controllers\" />
       <Folder Include="Areas\Role\Data\" />
+      <Folder Include="Areas\Subscriber\Data\" />
       <Folder Include="Areas\User\Data\" />
       <Folder Include="wwwroot\Assets\Main\" />
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Areas\Policy\Views\Home\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Policy\Views\Home\Delete.cshtml" />
+      <AdditionalFiles Include="Areas\Policy\Views\Home\Details.cshtml" />
+      <AdditionalFiles Include="Areas\Policy\Views\Home\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\Policy\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Policy\Views\_ViewImports.cshtml" />
       <AdditionalFiles Include="Areas\Posts\Views\Home\Create.cshtml" />
       <AdditionalFiles Include="Areas\Posts\Views\Home\Delete.cshtml" />
       <AdditionalFiles Include="Areas\Posts\Views\Home\Details.cshtml" />

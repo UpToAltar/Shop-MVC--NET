@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetMVC.Areas.Category.Models;
+using NetMVC.Areas.Advertisements.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
 using X.PagedList;
@@ -14,7 +14,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Advertisements.Controllers
 {
     [Area("Advertisement")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -81,7 +81,7 @@ namespace NetMVC.Areas.Advertisements.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,Title,Position,Description,Image,Link,IsActive")] Models.Advertisement advertisements,
+            [Bind("Id,Title,Position,Description,Image,Link,IsActive")] Advertisement advertisements,
             IFormFile? file)
         {
             if (ModelState.IsValid)
@@ -129,7 +129,7 @@ namespace NetMVC.Areas.Advertisements.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,IFormFile? file,
-            [Bind("Id,Title,Position,Description,Image,Link,IsActive,CreatedAt,CreatedBy")] Models.Advertisement advertisements)
+            [Bind("Id,Title,Position,Description,Image,Link,IsActive,CreatedAt,CreatedBy")] Advertisement advertisements)
         {
             if (id != advertisements.Id)
             {

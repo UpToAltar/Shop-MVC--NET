@@ -298,3 +298,5 @@ D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\Facebook.dll
 d:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\app.settings.example.json
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll

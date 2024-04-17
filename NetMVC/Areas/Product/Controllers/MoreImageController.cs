@@ -7,7 +7,7 @@ using NetMVC.UpLoad;
 namespace NetMVC.Areas.Products.Controllers;
 
 [Area("Product")]
-[Authorize(Roles = "Admin,Manager")]
+[Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
 public class MoreImageController : Controller
 {
     private readonly AppDbContext _context;

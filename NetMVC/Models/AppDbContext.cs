@@ -16,7 +16,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Post> Posts { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
     public DbSet<ProductImage> ProductImages { get; set; }
-    public DbSet<Subcribe> Subcribes { get; set; }
+    public DbSet<Subscriber> Subscribers { get; set; }
     public DbSet<SystemSetting> SystemSettings { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {

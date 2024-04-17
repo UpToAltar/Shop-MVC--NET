@@ -14,7 +14,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Role.Controllers
 {
     [Area("Role")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = $"{BaseRole.Admin}")]
     public class HomeController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NetMVC.Models;
 
-[Table("Subcribe")]
-public class Subcribe
+[Table("Subscriber")]
+public class Subscriber
 {
     [Key]
     public Guid Id { get; set; }
     
     [Column(TypeName = "nvarchar(200)")]
     [EmailAddress]
-    [Microsoft.Build.Framework.Required]
+    [Required]  
     [Display(Name = "Email")]
     public string Email { get; set; }
     

@@ -2,7 +2,12 @@
 @model ConfirmEmailModel
 @{
     ViewData["Title"] = "Confirm email";
+    Layout = null;
 }
 
 <h1>@ViewData["Title"]</h1>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="text-center">
+    <a class="small" asp-page="./Login">Click here to login</a>
+</div>
+

@@ -12,7 +12,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Contact
 {
     [Area("Contact")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -76,21 +76,23 @@ namespace NetMVC.Areas.Contact
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("UserName,Email,PhoneNumber,Message,CreatedAt,CreatedBy")] Models.Contact contact)
+        public async Task<IActionResult> Create([FromBody]BodyContactModel data)
         {
-            if (ModelState.IsValid)
+            if (data != null && ModelState.IsValid)
             {
+                var contact = new Models.Contact();
                 contact.Id = Guid.NewGuid();
+                contact.UserName = data.UserName;
+                contact.Email = data.Email;
+                contact.PhoneNumber = data.PhoneNumber;
+                contact.Message = data.Message;
                 contact.CreatedAt = DateTime.Now;
-                contact.CreatedBy = contact.UserName ?? "Anonymous";
-                _context.Add(contact);
+                await _context.Contacts.AddAsync(contact);
                 await _context.SaveChangesAsync();
-                StatusMessage = "Contact created successfully.";
-                return RedirectToAction("Index", "Home", new { area = ""});
+                return Json(new { success = true, message = "Contact sended success!" });
             }
-            return View(contact);
+            return Json(new { success = false, message = "Invalid data request!" });
         }
 
         // GET: Contact/Contact/Edit/5

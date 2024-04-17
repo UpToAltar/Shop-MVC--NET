@@ -2,6 +2,7 @@
 @inject AppDbContext _context
 @{
 	var menuModel = await _context.Categories.Where(c=> c.IsActive).OrderBy(c => c.Position).ToListAsync();
+	var subModel = new Subscriber();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,8 @@
 <link rel="stylesheet" type="text/css" href="~/Assets/Main/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="~/Assets/Main/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="~/Assets/Main/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/Main/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+
 </head>
 
 <body>
@@ -30,7 +31,7 @@
     <partial name="~/Views/Main/_MenuHambuger.cshtml" model="menuModel" />
 	@RenderBody()
 	
-	<partial name="~/Views/Main/_Footer.cshtml"/>
+	<partial name="~/Views/Main/_Footer.cshtml" model="subModel"/>
 </div>
 
 <script src="~/Assets/Main/js/jquery-3.2.1.min.js"></script>
@@ -39,7 +40,14 @@
 <script src="~/Assets/Main/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="~/Assets/Main/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="~/Assets/Main/plugins/easing/easing.js"></script>
+<script src="~/Assets/Main/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="~/Assets/Main/js/categories_custom.js"></script>
+<script src="~/Assets/Main/js/contact_custom.js"></script>
+<script src="~/Assets/Main/js/single_custom.js"></script>
 <script src="~/Assets/Main/js/custom.js"></script>
+
+
 </body>
 @await RenderSectionAsync("scripts", required: false)
 </html>

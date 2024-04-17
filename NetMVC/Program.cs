@@ -1,8 +1,9 @@
+using System.Configuration;
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using NetMVC.Areas.Identity.Controller;
 using NetMVC.Data;
 using NetMVC.Mail;
 using NetMVC.UpLoad;
@@ -15,6 +16,12 @@ builder.Services.AddControllersWithViews();
 // Add services to the container.
 var services = builder.Services;
 
+// Limit request 
+services.AddMemoryCache();
+services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>(); // Thêm dòng này vào đây
+services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection("IpRateLimitPolicies"));
+services.AddInMemoryRateLimiting();
 
 // Add DBContext
 services.AddDbContext<AppDbContext>(options =>
@@ -114,7 +121,7 @@ app.Use(async (context, next) =>
 });
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseIpRateLimiting();
 app.UseRouting();
 
 app.UseAuthentication();
@@ -127,7 +134,8 @@ app.MapControllerRoute(
 );
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.MapRazorPages();
 app.Run();

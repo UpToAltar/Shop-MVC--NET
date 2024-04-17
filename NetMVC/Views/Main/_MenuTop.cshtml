@@ -64,7 +64,19 @@
 								{
 									foreach (var item in Model)
 									{
-										<li><a href="#">@item.Title</a></li>
+										if (item.Title == "Contact")
+										{
+											<li><a asp-area="Contact" asp-controller="Home" asp-action="Create">@item.Title</a></li>
+										}
+										else if (item.Title == "Home" || item.Title == "Index")
+										{
+											<li><a asp-area="" asp-controller="Home" asp-action="Index">@item.Title</a></li>
+										}
+										else
+										{
+											<li><a asp-area="" asp-controller="Home" asp-action="@item.Title">@item.Title</a></li>
+										}
+										
 									}
 								}
 								else

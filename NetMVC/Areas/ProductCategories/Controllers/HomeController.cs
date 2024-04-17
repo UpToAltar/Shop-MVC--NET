@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Areas.Category.Models;
+using NetMVC.Areas.ProductCategories.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
 using X.PagedList;
@@ -14,7 +15,7 @@ using X.PagedList;
 namespace NetMVC.Areas.ProductCategories.Controllers
 {
     [Area("ProductCategories")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -81,7 +82,7 @@ namespace NetMVC.Areas.ProductCategories.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,Title,Description,SeoTitle,SeoDescription,SeoKeywords")] Models.ProductCategory productCategories,
+            [Bind("Id,Title,Description,SeoTitle,SeoDescription,SeoKeywords")] ProductCategory productCategories,
             IFormFile? file)
         {
             if (ModelState.IsValid)
@@ -129,7 +130,7 @@ namespace NetMVC.Areas.ProductCategories.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,IFormFile? file,
-            [Bind("Id,Title,Description,Icon,SeoTitle,SeoDescription,SeoKeywords,CreatedAt,CreatedBy")] Models.ProductCategory productCategories)
+            [Bind("Id,Title,Description,Icon,SeoTitle,SeoDescription,SeoKeywords,CreatedAt,CreatedBy")] ProductCategory productCategories)
         {
             if (id != productCategories.Id)
             {

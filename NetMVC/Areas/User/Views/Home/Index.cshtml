@@ -30,12 +30,12 @@
                 @Html.DisplayNameFor(model => model.users[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.users[0].Address)
-            </th>
-            <th>
                 Role
             </th>
-
+            
+            <th>
+                @Html.DisplayNameFor(model => model.users[0].CreatedAt)
+            </th>
             <th></th>
         </tr>
         </thead>
@@ -53,10 +53,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
                 </td>
                 <td>
                     @{
@@ -76,7 +72,9 @@
                     }
                     @userRole
                 </td>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
                 <td>
                     <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |

@@ -30,13 +30,15 @@ namespace NetMVC.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<AppUser> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly AppDbContext _context;
 
         public ExternalLoginModel(
             SignInManager<AppUser> signInManager,
             UserManager<AppUser> userManager,
             IUserStore<AppUser> userStore,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            AppDbContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -44,6 +46,7 @@ namespace NetMVC.Areas.Identity.Pages.Account
             _emailStore = GetEmailStore();
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -162,6 +165,10 @@ namespace NetMVC.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    if (_context.Roles.Any(r => r.Name == BaseRole.User))
+                    {
+                        await _userManager.AddToRoleAsync(user, BaseRole.User);
+                    }
                     
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)

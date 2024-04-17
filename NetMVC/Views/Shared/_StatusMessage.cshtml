@@ -1,5 +1,5 @@
 ﻿@{
-    var statusMessage = TempData["StatusMessage"] as string;
+    var statusMessage = TempData["StatusMessage"] as string ?? ViewBag.ErrorMessage as string;
 }
 
 @if (!String.IsNullOrEmpty(statusMessage))

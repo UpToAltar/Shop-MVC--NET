@@ -21,7 +21,6 @@ public class Policy : Common
     
     [Display(Name = "Icon")]
     [Column(TypeName = "nvarchar(200)")]
-    [Required]
     public string? Icon {get;set;}
     
     [Column(TypeName = "nvarchar(200)")]

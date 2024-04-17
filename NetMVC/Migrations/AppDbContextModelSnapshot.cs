@@ -172,11 +172,9 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("IsActive")
@@ -193,7 +191,6 @@ namespace NetMVC.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -551,7 +548,6 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("IsActive")
@@ -660,7 +656,7 @@ namespace NetMVC.Migrations
 
                     b.Property<string>("Detail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("ntext");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(250)");
@@ -793,7 +789,7 @@ namespace NetMVC.Migrations
                     b.ToTable("ProductImage");
                 });
 
-            modelBuilder.Entity("NetMVC.Models.Subcribe", b =>
+            modelBuilder.Entity("NetMVC.Models.Subscriber", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -808,7 +804,7 @@ namespace NetMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subcribe");
+                    b.ToTable("Subscriber");
                 });
 
             modelBuilder.Entity("NetMVC.Models.SystemSetting", b =>

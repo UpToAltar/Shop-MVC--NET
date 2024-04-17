@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sJx2vf5cQJKoe5JDhswSOoSWYj34QF6gcZQPkJ35m4Y=",
+  "Hash": "RcYdiDf+SIXR6cSf1EzUZmu02RcuIv4hPuyCbQm7jyQ=",
   "Source": "NetMVC",
   "BasePath": "_content/NetMVC",
   "Mode": "Default",
@@ -36446,6 +36446,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\Main\\styles\\responsive.css"
+    },
+    {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Main\\styles\\search_cate.css",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/Main/styles/search_cate.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Main\\styles\\search_cate.css"
     },
     {
       "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Main\\styles\\single_responsive.css",

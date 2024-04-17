@@ -115,6 +115,13 @@ namespace NetMVC.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                var checkUserName = await _userManager.FindByNameAsync(Input.UserName);
+                if(checkUserName!= null)
+                {
+                    ModelState.AddModelError(string.Empty, "UserName already exists");
+                    return Page();
+                }
+                
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
@@ -130,10 +137,10 @@ namespace NetMVC.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    if (_context.Roles.Any(r => r.Name == "User"))
+                    if (_context.Roles.Any(r => r.Name == BaseRole.User))
                     {
                         
-                        await _userManager.AddToRoleAsync(user, "User");
+                        await _userManager.AddToRoleAsync(user, BaseRole.User);
                     }
                     _logger.LogInformation("User created a new account with password.");
 

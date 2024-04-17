@@ -13,7 +13,7 @@ using X.PagedList;
 namespace NetMVC.Areas.Category.Controllers
 {
     [Area("Category")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;

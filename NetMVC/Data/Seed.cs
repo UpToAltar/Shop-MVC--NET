@@ -16,17 +16,17 @@ public class SeedData
     public async Task SeedRole()
     {
         var roleStore = new RoleStore<IdentityRole>(_context);
-        if (!_context.Roles.Any(r => r.Name == "Admin"))
+        if (!_context.Roles.Any(r => r.Name == BaseRole.Admin))
         {
-            await roleStore.CreateAsync(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
+            await roleStore.CreateAsync(new IdentityRole { Name = BaseRole.Admin, NormalizedName = BaseRole.Admin.ToUpper() });
         }
-        if (!_context.Roles.Any(r => r.Name == "User"))
+        if (!_context.Roles.Any(r => r.Name == BaseRole.User))
         {
-            await roleStore.CreateAsync(new IdentityRole { Name = "User", NormalizedName = "USER" });
+            await roleStore.CreateAsync(new IdentityRole { Name = BaseRole.User, NormalizedName = BaseRole.User.ToUpper() });
         }
-        if (!_context.Roles.Any(r => r.Name == "Manager"))
+        if (!_context.Roles.Any(r => r.Name == BaseRole.Manager))
         {
-            await roleStore.CreateAsync(new IdentityRole { Name = "Manager", NormalizedName = "MANAGER" });
+            await roleStore.CreateAsync(new IdentityRole { Name = BaseRole.Manager, NormalizedName = BaseRole.Manager.ToUpper() });
         }
         
     }
@@ -93,9 +93,9 @@ public class SeedData
         };
 
         var roleStore = new RoleStore<IdentityRole>(_context);
-        var roleAdmin = await roleStore.FindByNameAsync("Admin");
-        var roleUser = await roleStore.FindByNameAsync("User");
-        var roleManager = await roleStore.FindByNameAsync("Manager");
+        var roleAdmin = await roleStore.FindByNameAsync(BaseRole.Admin);
+        var roleUser = await roleStore.FindByNameAsync(BaseRole.User);
+        var roleManager = await roleStore.FindByNameAsync(BaseRole.Manager);
 
         if (!_context.Users.Any(u => u.UserName == admin.UserName))
         {

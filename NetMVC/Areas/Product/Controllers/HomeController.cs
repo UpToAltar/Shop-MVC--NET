@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetMVC.Areas.Category.Models;
+using NetMVC.Areas.Product.Models;
 using NetMVC.Models;
 using NetMVC.UpLoad;
 using NuGet.Packaging;
 using X.PagedList;
 
-namespace NetMVC.Areas.Products.Controllers
+namespace NetMVC.Areas.Product.Controllers
 {
     [Area("Product")]
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize(Roles = $"{BaseRole.Admin},{BaseRole.Manager}")]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -100,7 +100,7 @@ namespace NetMVC.Areas.Products.Controllers
         public async Task<IActionResult> Create(IFormFile? file, IFormFile[]? files,
             [Bind("Id,Title,Description,ProductCode,Detail,Price,"+
                   "SeoTitle,SeoDescription,SeoKeywords,PriceSale,Quantity," +
-                  "IsFeature,IsHot,IsHome,IsActive,IsSale,ProductCategoryId,")] Models.Product product)
+                  "IsFeature,IsHot,IsHome,IsActive,IsSale,ProductCategoryId,")] NetMVC.Models.Product product)
         {
             ViewData["ProductCategoryId"] = new SelectList(_context.ProductCategories.ToList(), "Id", "Title");
             if (ModelState.IsValid)
@@ -183,7 +183,7 @@ namespace NetMVC.Areas.Products.Controllers
         public async Task<IActionResult> Edit(Guid id,IFormFile? file, IFormFile[]? files,
             [Bind("Id,Title,Description,ProductCode,Detail,Price,Image,"+
             "SeoTitle,SeoDescription,SeoKeywords,PriceSale,Quantity,CreatedAt,CreatedBy," +
-            "IsFeature,IsHot,IsHome,IsActive,ProductImages,IsSale,ProductCategoryId,")] Models.Product product)
+            "IsFeature,IsHot,IsHome,IsActive,ProductImages,IsSale,ProductCategoryId,")] NetMVC.Models.Product product)
         {
             ViewData["ProductCategoryId"] = new SelectList(_context.ProductCategories.ToList(), "Id", "Title");
             if (id != product.Id)

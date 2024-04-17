@@ -48,19 +48,57 @@ jQuery(document).ready(function($)
 	{
 		setHeader();
 	});
-
+	
 	initMenu();
 	initFavorite();
 	initFixProductBorder();
 	initIsotopeFiltering();
 	initPriceSlider();
 	initCheckboxes();
-
+	sortIso();
+	searchIso();
 	/* 
 
 	2. Set Header
 
 	*/
+	function sortIso(){
+		// Gọi Isotope
+		var $grid = $('.product-grid').isotope({
+			itemSelector: '.product-item',
+			layoutMode: 'fitRows'
+		});
+
+		// Bắt sự kiện khi một danh mục được chọn
+		$('.sidebar_categories').on( 'click', 'a', function() {
+			var filterValue = $(this).attr('data-filter');
+			// Lọc các sản phẩm theo id
+			$grid.isotope({ filter: filterValue });
+		});
+	}
+	function searchIso(){
+		// Gọi Isotope
+		var $grid = $('.product-grid').isotope({
+			itemSelector: '.product-item',
+			layoutMode: 'fitRows'
+		});
+		// Bắt sự kiện khi nút tìm kiếm được nhấn
+		$('#search-button').on('click', function() {
+			var searchValue = $('#search-input').val().toLowerCase();
+			// Lọc các sản phẩm dựa trên kết quả tìm kiếm
+			$grid.isotope({ filter: function() {
+					var productName = $(this).find('.product_name a').text().toLowerCase();
+					return productName.indexOf(searchValue) > -1;
+				} });
+		});
+
+// Xóa bộ lọc khi người dùng xóa hết nội dung trong ô tìm kiếm
+		$('#search-input').on('input', function() {
+			if ($(this).val() === '') {
+				$grid.isotope({ filter: '*' });
+			}
+		});
+	}
 
 	function setHeader()
 	{
