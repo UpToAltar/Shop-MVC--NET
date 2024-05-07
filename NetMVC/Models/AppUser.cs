@@ -7,6 +7,10 @@ namespace NetMVC.Models;
 
 public class AppUser : IdentityUser
 {
+    public AppUser()
+    {
+        this.Order = new HashSet<Order>();
+    }
     [Column(TypeName = "nvarchar(200)")]
     public string? Address { get; set; }
     
@@ -40,4 +44,6 @@ public class AppUser : IdentityUser
     
     [DefaultValue("Is not updated")]
     public string? OtherLink { get; set; }
+    
+    public ICollection<Order>? Order {get;set;}
 }

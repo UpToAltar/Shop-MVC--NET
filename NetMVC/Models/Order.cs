@@ -25,6 +25,11 @@ public class Order : Common
     public string CustomerName { get; set; }
     
     [Column(TypeName = "nvarchar(200)")]
+    [Display(Name = "CustomerEmail")]
+    [Required]
+    public string CustomerEmail { get; set; }
+    
+    [Column(TypeName = "nvarchar(200)")]
     [Display(Name = "PhoneNumber")]
     public string? PhoneNumber { get; set; }
     
@@ -39,6 +44,12 @@ public class Order : Common
     
     [Required]
     public int Quantity { get; set; }
+    public int MethodPay { get; set; }
     
+    public bool IsConfirmByUser { get; set; } = false;
+    public bool IsConfirmByShop { get; set; } = false;
+    public int Status { get; set; }
+    [Required]
+    public string? AppUserIdFK { get; set; }
     public ICollection<OrderDetail>? OrderDetails {get;set;}
 }

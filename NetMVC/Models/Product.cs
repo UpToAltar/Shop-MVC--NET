@@ -11,6 +11,7 @@ public class Product : Common
     {
         this.ProductImages = new HashSet<ProductImage>();
         this.OrderDetails = new HashSet<OrderDetail>();
+        this.Comments = new HashSet<Comment>();
     }
     [Key]
     public Guid Id { get; set; }
@@ -41,6 +42,8 @@ public class Product : Common
     
     [Required]
     public decimal Price { get; set; } 
+    
+    public int ViewCount { get; set; } = 0;
     
     [Required]
     public decimal PriceSale { get; set; } 
@@ -77,4 +80,6 @@ public class Product : Common
     public virtual ICollection<ProductImage>? ProductImages { get; set; }
     
     public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
+    
+    public virtual ICollection<Comment> Comments { get; set; }
 }

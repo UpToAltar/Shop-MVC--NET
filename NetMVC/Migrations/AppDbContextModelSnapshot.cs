@@ -364,6 +364,50 @@ namespace NetMVC.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("NetMVC.Models.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserIdFK")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserIdFK");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("NetMVC.Models.Contact", b =>
                 {
                     b.Property<Guid>("Id")
@@ -467,6 +511,13 @@ namespace NetMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AppUserIdFK")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)");
@@ -477,17 +528,33 @@ namespace NetMVC.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CustomerEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("CustomerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<bool>("IsConfirmByShop")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsConfirmByUser")
+                        .HasColumnType("bit");
+
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MethodPay")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmount")
@@ -500,6 +567,8 @@ namespace NetMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Order");
                 });
@@ -715,6 +784,9 @@ namespace NetMVC.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductCategoryId");
@@ -875,6 +947,25 @@ namespace NetMVC.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("NetMVC.Models.Comment", b =>
+                {
+                    b.HasOne("NetMVC.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserIdFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NetMVC.Models.Product", "Product")
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("NetMVC.Models.News", b =>
                 {
                     b.HasOne("NetMVC.Models.Category", "Category")
@@ -882,6 +973,13 @@ namespace NetMVC.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("NetMVC.Models.Order", b =>
+                {
+                    b.HasOne("NetMVC.Models.AppUser", null)
+                        .WithMany("Order")
+                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("NetMVC.Models.OrderDetail", b =>
@@ -934,6 +1032,11 @@ namespace NetMVC.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("NetMVC.Models.AppUser", b =>
+                {
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("NetMVC.Models.Category", b =>
                 {
                     b.Navigation("News");
@@ -948,6 +1051,8 @@ namespace NetMVC.Migrations
 
             modelBuilder.Entity("NetMVC.Models.Product", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("OrderDetails");
 
                     b.Navigation("ProductImages");

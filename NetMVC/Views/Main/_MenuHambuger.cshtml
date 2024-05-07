@@ -27,13 +27,25 @@
 						<li><a href="#">Spanish</a></li>
 					</ul>
 				</li>
-				<partial name="_LoginPartial"/>
+				<partial name="_LoginPartialHambuger"/>
 				@if(Model.Count > 0)
                 {
-                	foreach (var item in Model)
-                	{
-                		<li class="menu_item"><a href="#">@item.Title</a></li>
-                	}
+	                foreach (var item in Model)
+	                {
+		                if (item.Title == "Contact")
+		                {
+			                <li class="menu_item"><a asp-area="Contact" asp-controller="Home" asp-action="Create">@item.Title</a></li>
+		                }
+		                else if (item.Title == "Home" || item.Title == "Index")
+		                {
+			                <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">@item.Title</a></li>
+		                }
+		                else
+		                {
+			                <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="@item.Title">@item.Title</a></li>
+		                }
+										
+	                }
                 }
                 else
                 {

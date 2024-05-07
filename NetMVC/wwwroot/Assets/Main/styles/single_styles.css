@@ -1265,10 +1265,13 @@ section
 }
 .reviews_col
 {
+	max-height: 350px;
+	overflow-y: auto;
 	padding-right: 30px;
 }
 .user_pic
 {
+	overflow: hidden;
 	width: 70px;
 	height: 70px;
 	background: #ebebeb;
@@ -1313,7 +1316,7 @@ section
 
 .add_review
 {
-	margin-top: 94px;
+	margin-top: 0;
 }
 #review_form > div
 {

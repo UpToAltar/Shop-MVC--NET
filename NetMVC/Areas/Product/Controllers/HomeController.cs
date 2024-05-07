@@ -81,6 +81,7 @@ namespace NetMVC.Areas.Product.Controllers
             {
                 product.ProductImages = productImages;
             }
+            
 
             return View(product);
         }

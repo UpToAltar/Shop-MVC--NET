@@ -5,16 +5,37 @@
 @{
     ViewData["Title"] = "Access denied";
     var user = await _userManager.GetUserAsync(User);
+    var admin = 0;
     var roles = await _userManager.GetRolesAsync(user);
     if(roles.Contains("Admin") || roles.Contains("Manager"))
     {
+        admin = 1;
         Layout = "_LayoutAdmin";
     }
 }
-
-<header>
-    <div class="m-3">
-        <h1 class="text-danger">@ViewData["Title"]</h1>
-            <p class="text-danger">You do not have access to this resource.</p>
+@if (admin == 0)
+{
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/contact_styles.css">
+        <link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/contact_responsive.css">
+    </head>
+    <div class="container contact_container">
+        <header style="margin-top: 213px">
+            <div class="m-3">
+                <h1 class="text-danger">@ViewData["Title"]</h1>
+                    <p class="text-danger">You do not have access to this resource.</p>
+            </div>
+        </header>
     </div>
-</header>
+}
+else
+{
+    <header>
+        <div class="m-3">
+            <h1 class="text-danger">@ViewData["Title"]</h1>
+            <p class="text-danger">You do not have access to this resource.</p>
+        </div>
+    </header>
+}
+
+

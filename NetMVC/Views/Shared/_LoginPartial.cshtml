@@ -28,7 +28,8 @@
 <li class="account">
     @if (SignInManager.IsSignedIn(User))
     {
-        <a href="#">
+        var user = UserManager.GetUserAsync(User).Result;
+        <a asp-area="User" asp-controller="UserNormal" asp-action="EditRender" asp-route-id="@user.Id">
             Hello @UserManager.GetUserName(User)!
             <i class="fa fa-angle-down"></i>
         </a>

@@ -1,4 +1,13 @@
-﻿@model List<Category>
+﻿@using Microsoft.AspNetCore.Identity
+@model List<Category>
+@inject UserManager<AppUser> UserManager
+@{
+	var user = new AppUser();
+	if(User.Identity.IsAuthenticated)
+	{
+		user = UserManager.GetUserAsync(User).Result;
+	}
+}
 <!-- Header -->
 
 	<header class="header trans_300">
@@ -91,11 +100,11 @@
 							</ul>
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+								<li><a asp-area="User" asp-controller="UserNormal" asp-action="EditRender" asp-route-id="@user.Id"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 								<li class="checkout">
-									<a href="#">
+									<a asp-area="Cart" asp-controller="Home" asp-action="CartIndex">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										<span id="checkout_items" class="checkout_items">2</span>
+										<span id="checkout_items" class="checkout_items">0</span>
 									</a>
 								</li>
 							</ul>

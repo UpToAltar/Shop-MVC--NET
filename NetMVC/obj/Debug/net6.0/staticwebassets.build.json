@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RcYdiDf+SIXR6cSf1EzUZmu02RcuIv4hPuyCbQm7jyQ=",
+  "Hash": "CK+b0G8Z1Od06FRPcZnzKlrEFsGzLFLxGgnW2Xsc1Qw=",
   "Source": "NetMVC",
   "BasePath": "_content/NetMVC",
   "Mode": "Default",
@@ -34799,6 +34799,23 @@
       "OriginalItemSpec": "wwwroot\\Assets\\JsFunction\\SetDefaultImg.js"
     },
     {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\JsFunction\\ShoppingCart.js",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/JsFunction/ShoppingCart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\JsFunction\\ShoppingCart.js"
+    },
+    {
       "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\JsFunction\\showMenuClick.js",
       "SourceId": "NetMVC",
       "SourceType": "Discovered",
@@ -36497,6 +36514,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\Main\\styles\\single_styles.css"
+    },
+    {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Payment\\SendToAdmin.html",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/Payment/SendToAdmin.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Payment\\SendToAdmin.html"
+    },
+    {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Payment\\sendToCustomer.html",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/Payment/sendToCustomer.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Payment\\sendToCustomer.html"
     },
     {
       "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\css\\loader.css",

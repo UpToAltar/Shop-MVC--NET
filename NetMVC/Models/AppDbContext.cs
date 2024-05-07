@@ -18,6 +18,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<ProductImage> ProductImages { get; set; }
     public DbSet<Subscriber> Subscribers { get; set; }
     public DbSet<SystemSetting> SystemSettings { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         
@@ -63,6 +64,11 @@ public class AppDbContext : IdentityDbContext<AppUser>
         modelBuilder.Entity<AppUser>()
             .Property(u => u.Image)
             .HasDefaultValue("https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png");
+        
+        modelBuilder.Entity<Comment>()
+            .HasOne(c => c.AppUser)
+            .WithMany()
+            .HasForeignKey(c => c.AppUserIdFK);
         
     }
 }

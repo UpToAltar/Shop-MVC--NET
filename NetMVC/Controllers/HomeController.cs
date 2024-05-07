@@ -59,15 +59,22 @@ public class HomeController : Controller
     public async Task<IActionResult> DetailProduct(Guid id)
     {
         var product = await _context.Products.FindAsync(id);
+        await _context.Entry(product).Collection(p => p.ProductImages).LoadAsync();
+        await _context.Entry(product).Collection(p => p.Comments).Query().Include(c => c.AppUser).LoadAsync();
+        await _context.Entry(product).Reference(p => p.ProductCategory).LoadAsync();
         if (product == null)
         {
             return RedirectToAction("Error404", "Home");
         }
+        product.ViewCount += 1;
+        await _context.SaveChangesAsync();
         var policyModel = await _context.Policies.Where(p => p.IsActive && p.Icon != null).ToListAsync();
+        
         var model = new IndexDetail()
         {
             product = product,
-            policyModel = policyModel
+            policyModel = policyModel,
+            userId = await _context.Users.Where(u => u.UserName == User.Identity.Name).Select(u => u.Id).FirstOrDefaultAsync()
         };
         return View(model);
     }

@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NetMVC.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    var roles = new List<string>();
+    if (SignInManager.IsSignedIn(User))
+    {
+        roles = UserManager.GetRolesAsync(UserManager.GetUserAsync(User).Result).Result.ToList();
+    }
+}
+<style>
+    .button-like-link {
+        background: none;
+        border: none;
+       
+        cursor: pointer;
+        padding: 0 0 0 5px;
+        font: inherit;
+    }
+    
+    .button-like-link:hover {
+    
+         opacity: 0.8/* Loại bỏ gạch chân khi hover */
+    }
+</style>
+<li class="menu_item has-children">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = UserManager.GetUserAsync(User).Result;
+        <a asp-area="User" asp-controller="UserNormal" asp-action="EditRender" asp-route-id="@user.Id">
+            Hello @UserManager.GetUserName(User)!
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="menu_selection">
+            @if (roles.Contains("Admin") || roles.Contains("Manager"))
+            {
+                <li><a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-user" aria-hidden="true"></i>Admin</a></li>
+            }
+            <li>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <form style="display: inline-block" id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button class="button-like-link" id="logout" type="submit">Logout</button>
+                </form>
+
+            </li>
+
+        </ul>
+    }
+    else
+    {
+        <a href="#">
+            My Account
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="menu_selection">
+            <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+        </ul>
+    }
+</li>

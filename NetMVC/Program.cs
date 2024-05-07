@@ -15,7 +15,11 @@ builder.Services.AddControllersWithViews();
 
 // Add services to the container.
 var services = builder.Services;
-
+//Use Session
+services.AddSession(options =>
+{
+    options.Cookie.IsEssential = true; // Make the session cookie essential
+});
 // Limit request 
 services.AddMemoryCache();
 services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>(); // Thêm dòng này vào đây
@@ -123,7 +127,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseIpRateLimiting();
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

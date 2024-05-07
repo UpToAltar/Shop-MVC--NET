@@ -46,6 +46,13 @@ namespace NetMVC.Areas.Contact
             };
             return View(model);
         }
+        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Okok()
+        {
+            return View();
+        }
 
         // GET: Contact/Contact/Details/5
         public async Task<IActionResult> Details(Guid? id)

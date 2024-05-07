@@ -1,0 +1,91 @@
+@model NetMVC.Areas.Policy.Models.IndexPolicyModel
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int number = 0;
+    var searchStr = Context.Request.Query["searchString"];
+}
+<partial name="_StatusMessage"/>
+
+<div class="m-3">
+    <h1>LIST POLICIES - Total : @Model.totalPolicies</h1>
+    
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+        <a class="btn btn-warning" id="btnDeleteMany" >Delete Many</a>
+        
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" id="selectAll" />
+            </th>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.policies[0].Icon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.policies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.policies[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.policies[0].IsActive)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.policies) {
+            number++;
+            var index = number + (Model.policies.PageNumber - 1) * Model.policies.PageSize;
+            <tr>
+                <td>
+                    <input type="checkbox" class="selectItem" value="@item.Id" />
+                </td>
+                <td>
+                    @index
+                </td>
+                <td>
+                    <img src="@item.Icon" alt="image" style="width: 40px; height: 40px;"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if (item.IsActive == true)
+                    {
+                        <span class="badge badge-success">Yes</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">No</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="m-3 d-flex flex-row-reverse">
+        @Html.PagedListPager(Model.policies, page => Url.Action("Index", new { page, searchString = searchStr }))
+    </div>
+</div>
+
+@* notification toast *@
+<div id="notiToast"></div>
+<script src="~/Assets/JsFunction/SelectAllToDelete.js"></script>
+<script src="~/Assets/JsFunction/SearchPagination.js"></script>
