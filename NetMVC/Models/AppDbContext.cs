@@ -22,6 +22,8 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Notification> Notifications { get; set; }
     
     public DbSet<WishList> WishLists { get; set; }
+    
+    public DbSet<Statistical> Statisticals { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         

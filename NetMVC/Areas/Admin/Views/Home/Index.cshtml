@@ -110,7 +110,7 @@
                     <!-- Card Header - Dropdown -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview @DateTime.Now.Year</h6>
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -131,6 +131,20 @@
                         <div class="chart-area">
                             <canvas id="myAreaChart"></canvas>
                         </div>
+                        <form class="chart-area-data-month">
+                            <input name="1" value="@Model.StaticalInYear.January" hidden="hidden"/>
+                            <input name="2" value="@Model.StaticalInYear.February" hidden="hidden"/>
+                            <input name="3" value="@Model.StaticalInYear.March" hidden="hidden"/>
+                            <input name="4" value="@Model.StaticalInYear.April" hidden="hidden"/>
+                            <input name="5" value="@Model.StaticalInYear.May" hidden="hidden"/>
+                            <input name="6" value="@Model.StaticalInYear.June" hidden="hidden"/>
+                            <input name="7" value="@Model.StaticalInYear.July" hidden="hidden"/>
+                            <input name="8" value="@Model.StaticalInYear.August" hidden="hidden"/>
+                            <input name="9" value="@Model.StaticalInYear.September" hidden="hidden"/>
+                            <input name="10" value="@Model.StaticalInYear.October" hidden="hidden"/>
+                            <input name="11" value="@Model.StaticalInYear.November" hidden="hidden"/>
+                            <input name="12" value="@Model.StaticalInYear.December" hidden="hidden"/>
+                        </form>
                     </div>
                 </div>
             </div>

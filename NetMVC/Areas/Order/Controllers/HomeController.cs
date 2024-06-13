@@ -127,6 +127,33 @@ namespace NetMVC.Areas.Order.Controllers
                     findOrder.UpdatedBy = User.Identity.Name;
                     _context.Orders.Update(findOrder);
                     StatusMessage = "Orders has been updated.";
+
+                    if (findOrder.Status == (int)StatusOrder.Completed)
+                    {
+                        var findStatics = await _context.Statisticals.FirstOrDefaultAsync(
+                            s => s.Time == DateTime.Now
+                            );
+                        if (findStatics == null)
+                        {
+                            var newStatics = new Statistical()
+                            {
+                                Time = DateTime.Now,
+                                TotalAmount = order.TotalAmount,
+                                TotalQuantity = order.Quantity,
+                                TotalOrderComplicated = 1,
+                                
+                            };
+                            await _context.Statisticals.AddAsync(newStatics);
+                        }
+                        else
+                        {
+                            findStatics.TotalAmount += order.TotalAmount;
+                            findStatics.TotalOrderComplicated += 1;
+                            findStatics.TotalQuantity += order.Quantity;
+                        }
+                    }
+                    
+                    
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
