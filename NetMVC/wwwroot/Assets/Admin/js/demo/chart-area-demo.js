@@ -36,7 +36,6 @@ var dataMonth = []
 for(let i=0; i<12; i++){
   dataMonth[i] = inputDataForm[i].defaultValue;
 }
-
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {

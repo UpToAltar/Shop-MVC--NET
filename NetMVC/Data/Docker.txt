@@ -1,0 +1,6 @@
+B1:(Nếu chưa có image) cài image : docker pull mcr.microsoft.com/mssql/server:2019-latest
+
+B2:docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Quan@@123' -p 1427:1427 -d mcr.microsoft.com/mssql/server:2019-latest --name MVC-SQL-Server
+B3:Cho connection string sau vào AppMVC : Data Source=localhost,1427;
+                Initial Catalog=AppMVC;
+                User ID=sa;Password=Quan@@123

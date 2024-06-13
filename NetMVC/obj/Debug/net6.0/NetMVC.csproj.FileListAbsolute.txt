@@ -1,5 +1,4 @@
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\appsettings.Development.json
-D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\appsettings.json
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\NetMVC.staticwebassets.runtime.json
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\NetMVC.exe
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\NetMVC.deps.json
@@ -300,3 +299,4 @@ D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\AspNetCoreRateLimit.dll
 D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\TeamGame\NetMVC\NetMVC\bin\Debug\net6.0\appsettings.json
