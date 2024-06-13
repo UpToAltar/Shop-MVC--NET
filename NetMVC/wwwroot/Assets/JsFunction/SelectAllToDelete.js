@@ -93,8 +93,10 @@ btnDeleteMany.addEventListener('click',  async function () {
     }
     let overlay = document.getElementById("overlay");
     overlay.classList.remove("d-none");
+    const url = new URL(window.location.href).pathname;
+    console.log(url)
     try {
-        const url = window.location.href;
+        
         const response = await postData(`${url}/Home/DeleteMany`, strId);
         if (response.success) {
             showSuccessnotiToast();

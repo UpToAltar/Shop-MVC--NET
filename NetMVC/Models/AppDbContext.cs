@@ -19,6 +19,9 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Subscriber> Subscribers { get; set; }
     public DbSet<SystemSetting> SystemSettings { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+    
+    public DbSet<WishList> WishLists { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         

@@ -35,10 +35,10 @@ namespace NetMVC.Areas.News.Controllers
             {
                 return Problem("Entity set 'AppDbContext.News'  is null.");
             }
-            var news = _context.News.OrderBy( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+            var news = _context.News.OrderByDescending( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                news = _context.News.Where(n => n.Title.Contains(searchString)).OrderBy(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+                news = _context.News.Where(n => n.Title.Contains(searchString)).OrderByDescending(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
             var model = new IndexNewsModel
             {

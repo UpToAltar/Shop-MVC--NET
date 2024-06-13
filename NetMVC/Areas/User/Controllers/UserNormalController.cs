@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NetMVC.Areas.Order.Models;
 using NetMVC.Areas.Payment.Models;
+using NetMVC.Areas.User.Models;
+using NetMVC.Migrations;
 using NetMVC.Models;
 using NetMVC.Models.Cart;
 using NetMVC.UpLoad;
@@ -30,6 +32,7 @@ public class UserNormalController : Controller
     [TempData]
     public string StatusMessage { get; set; }
     public const int ITEM_PER_PAGE = 5;
+    public const int ITEM_PER_PAGE_WISHLIST = 6;
     
     // GET: User/User/Edit/5
         public async Task<IActionResult> EditRender(Guid? id)
@@ -157,10 +160,125 @@ public class UserNormalController : Controller
             order.UpdatedAt = DateTime.Now;
             order.UpdatedBy = user.UserName;
             StatusMessage = "Order has been cancelled.";
+            //Create notification
+            var notification = new NetMVC.Models.Notification()
+            {
+                Id = new Guid(),
+                Description = $"User {user.UserName} has cancelled an order with code {order.Code}",
+                Type = TypeNotification.Warning,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                CreatedBy = user.UserName,
+                UpdatedBy = user.UserName,
+            };
+        
+            await _context.Notifications.AddAsync(notification);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(HistoryOrder), new {id = user.Id});
         }
         
+        [HttpGet]
+        public async Task<IActionResult> GetWishList(int? page)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var query = from p in _context.Products
+                join w in _context.WishLists on p.Id.ToString() equals w.ProductId
+                where w.UserId == user.Id
+                select p;
+            var model = query.ToPagedList(page ?? 1, ITEM_PER_PAGE_WISHLIST);
+            return View(model);
+        }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddWishList([FromBody] WishListAddModel data)
+        {
+            if(data.UserId == null || data.ProductId == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "UserId or ProductId is null ",
+                });
+            }
+            //check User
+           var user = await _context.Users.FirstOrDefaultAsync( u => u.Id == data.UserId);
+           if(user == null)
+           {
+               return Ok(new
+               {
+                   success = false,
+                   message = "User not found"
+               });
+           }
+           else
+           {
+               var checkUser = await _userManager.GetUserAsync(User);
+                if (checkUser.Id != user.Id)
+                {
+                     return Ok(new
+                     {
+                          success = false,
+                          message = "You are not this User"
+                     });
+                }
+           }
+           //check Product
+           var product = await _context.Products.FirstOrDefaultAsync( p => p.Id.ToString() == data.ProductId);
+           if(product == null)
+           {
+               return Ok(new
+               {
+                   success = false,
+                   message = "Product not found",
+               });
+           }
+           //find wishList
+           var findWishList = await _context.WishLists.FirstOrDefaultAsync( w => w.UserId == data.UserId && w.ProductId == data.ProductId);
+           var wishList = new WishList()
+           {
+               UserId = data.UserId,
+               ProductId = data.ProductId,
+           };
+           if (data.IsAdd)
+           {
+               if (findWishList == null)
+               {
+                   await _context.WishLists.AddAsync(wishList);
+               }
+               else
+               {
+                   return Ok(new
+                   {
+                       success = false,
+                       message = "Product already exists in the wish list"
+
+                   });
+               }
+               
+           }
+           else
+           {
+               if (findWishList == null)
+               {
+                   return Ok(new
+                   {
+                       success = false,
+                       message = "Product is not exists in the wish list"
+                   });
+               }
+               else
+               {
+                   _context.WishLists.Remove(findWishList);
+               }
+           }
+              await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                success = true,
+                message = data.IsAdd ? "Add wish list successfully" : "Remove wish list successfully"
+            });
+        }
         
         
         private bool UserExists(string id)

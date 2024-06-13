@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CK+b0G8Z1Od06FRPcZnzKlrEFsGzLFLxGgnW2Xsc1Qw=",
+  "Hash": "GCUkS4W6gFVlacIMD+KoMsw8IaDQ08iCHGXkwC+Kwt4=",
   "Source": "NetMVC",
   "BasePath": "_content/NetMVC",
   "Mode": "Default",
@@ -34848,6 +34848,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\JsFunction\\Toast.js"
+    },
+    {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\JsFunction\\wishList.js",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/JsFunction/wishList.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\JsFunction\\wishList.js"
     },
     {
       "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Main\\images\\banner_1.jpg",

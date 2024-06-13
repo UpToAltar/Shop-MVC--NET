@@ -1,0 +1,26 @@
+﻿@model News
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/contact_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/Main/styles/contact_responsive.css">
+</head>
+
+<div class="container contact_container">
+    <div class="row">
+        <div class="col">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>BlogDetail</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        @Html.Raw(@Model.Detail)
+    </div>
+</div>

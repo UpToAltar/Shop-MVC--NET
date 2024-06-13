@@ -134,9 +134,16 @@
         @Html.PagedListPager(Model.orders, page => Url.Action("Index", new { page, searchString = searchStr }))
     </div>
 </div>
-
+@* overlay *@
+<div id="overlay" class="d-none">
+    <div class="loader-wrap">
+        <div class="loader"></div>
+    </div>
+</div>
 @* notification toast *@
 <div id="notiToast"></div>
+<script src="~/Assets/JsFunction/SelectAllToDelete.js"></script>
+<script src="~/Assets/JsFunction/SearchPagination.js"></script>
 
 <script>
 let dropdown = document.querySelector('.optionSelect');

@@ -33,10 +33,10 @@ namespace NetMVC.Areas.Contact
             {
                 return Problem("Entity set 'AppDbContext.contacts'  is null.");
             }
-            var contacts = _context.Contacts.OrderBy( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+            var contacts = _context.Contacts.OrderByDescending( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                contacts = _context.Contacts.Where(n => n.UserName.Contains(searchString)).OrderBy(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+                contacts = _context.Contacts.Where(n => n.UserName.Contains(searchString)).OrderByDescending(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
             var model = new IndexContactModel()
             {

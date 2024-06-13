@@ -1,4 +1,7 @@
-﻿@model List<Product>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@model List<Product>
+@inject UserManager<AppUser> _userManager
 @{
 	var convertFilData = new Func<string, string>(str =>
 	{
@@ -6,245 +9,254 @@
 		var strAfter = str.Replace("'", "-");
 		return strAfter.ToLower();
 	});
+	var user = await _userManager.GetUserAsync(User);
+	Console.WriteLine(user);
 }
 @inject AppDbContext _context
+<style>
+	.favorite_hot{
+    	position: absolute;
+    	bottom: 6px;
+    	right: 15px;
+    	width: 15px;
+    }
+</style>
 <div class="row">
 	<div class="col">
-	<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-		@if (Model.Count > 0)
-		{
-			foreach (var product in Model)
+		<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+			@if (Model.Count > 0)
 			{
-				var cate = await _context.ProductCategories.FindAsync(product.ProductCategoryId);
-				<div class="product-item @(cate != null ? convertFilData(cate.Title) : "")">
-					<div class="product discount product_filter">
-						<div class="product_image">
-							<img src="@product.Image" alt="">
-						</div>
-						@if (product.IsNew)
-						{
-							<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
-						}
-						@if (product.IsHot)
-						{
-							if (product.IsNew && product.IsSale)
+				foreach (var product in Model)
+				{
+					var cate = await _context.ProductCategories.FindAsync(product.ProductCategoryId);
+					var isWishList = false;
+					if (user != null)
+					{
+						isWishList = await _context.WishLists.AnyAsync( w => w.ProductId == product.Id.ToString() && w.UserId == user.Id);
+					}
+					<div class="product-item @(cate != null ? convertFilData(cate.Title) : "")">
+						<div class="product discount product_filter">
+							<div class="product_image">
+								<img src="@product.Image" alt="">
+							</div>
+							@if (user != null)
 							{
-								<div class="favorite favorite_center active"></div>
-							}
-							else if(product.IsNew)
-							{
-								<div class="favorite active"></div>
+								@if (isWishList)
+								{
+									<div onclick="addWishList(this,'@user.Id','@product.Id.ToString()',false)" class="favorite favorite_left active">
+									</div>
+								}
+								else
+								{
+									<div onclick="addWishList(this,'@user.Id','@product.Id.ToString()',true)" class="favorite favorite_left"></div>
+								}
 							}
 							else
 							{
-								<div class="favorite favorite_left active"></div>
+								<div class="favorite favorite_left"></div>
 							}
-						}
-						else
-						{
-							if (product.IsNew && product.IsSale)
-                            {
-                            	<div class="favorite favorite_center"></div>
-                            }
-                            else if(product.IsNew)
-                            {
-                            	<div class="favorite"></div>
-                            }
-                            else
-                            {
-                            	<div class="favorite favorite_left"></div>
-                            }
-							
-						}
-						@if (product.IsSale)
-						{
-							<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>SALE</span></div>
-						}
-						<div class="product_info">
-							<h6 class="product_name"><a asp-area="" asp-controller="Home" asp-action="DetailProduct" asp-route-id="@product.Id">@product.Title</a></h6>
+						
+							@if (product.IsNew)
+							{
+								<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+							}
+						
+							@if (product.IsHot)
+							{
+								<div class="favorite_hot">
+									<img style="width: 100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrnTcvwzlQ8iJaaYBxiidpCfrV3chVzBjdrkntlmsoWAeIDwrk1RgSJXcK_ze5NBaky0&usqp=CAU" alt=""/>
+								</div>
+							}
 							@if (product.IsSale)
 							{
-								<div class="product_price">$@product.PriceSale.ToString()<span>$@product.Price.ToString()</span></div>
+								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>SALE</span></div>
 							}
-							else
-							{
-								<div class="product_price">$@product.Price.ToString()</div>
-							}
+							<div class="product_info">
+								<h6 class="product_name"><a asp-area="" asp-controller="Home" asp-action="DetailProduct" asp-route-id="@product.Id">@product.Title</a></h6>
+								@if (product.IsSale)
+								{
+									<div class="product_price">$@product.PriceSale.ToString()<span>$@product.Price.ToString()</span></div>
+								}
+								else
+								{
+									<div class="product_price">$@product.Price.ToString()</div>
+								}
+							</div>
 						</div>
+						<div class="red_button add_to_cart_button"><a  style="color: #fff;cursor: pointer" class="add_to_cart_btn" data-id="@product.Id.ToString() ">add to cart</a></div>
 					</div>
-					<div class="red_button add_to_cart_button"><a  style="color: #fff;cursor: pointer" class="add_to_cart_btn" data-id="@product.Id.ToString() ">add to cart</a></div>
-				</div>
+				}
 			}
-		}
-		else
-		{
+			else
+			{
 			
 
-			<!-- Product 1 -->
+				<!-- Product 1 -->
 
-			<div class="product-item men-s">
-				<div class="product discount product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_1.png" alt="">
+				<div class="product-item men-s">
+					<div class="product discount product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_1.png" alt="">
+						</div>
+						<div class="favorite favorite_left"></div>
+						<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
+							<div class="product_price">$520.00<span>$590.00</span></div>
+						</div>
 					</div>
-					<div class="favorite favorite_left"></div>
-					<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-						<div class="product_price">$520.00<span>$590.00</span></div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 2 -->
+				<!-- Product 2 -->
 
-			<div class="product-item women-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_2.png" alt="">
+				<div class="product-item women-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_2.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
+							<div class="product_price">$610.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-						<div class="product_price">$610.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 3 -->
+				<!-- Product 3 -->
 
-			<div class="product-item women-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_3.png" alt="">
+				<div class="product-item women-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_3.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
+							<div class="product_price">$120.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-						<div class="product_price">$120.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 4 -->
+				<!-- Product 4 -->
 
-			<div class="product-item accessory">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_4.png" alt="">
+				<div class="product-item accessory">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_4.png" alt="">
+						</div>
+						<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+						<div class="favorite favorite_left"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
+							<div class="product_price">$410.00</div>
+						</div>
 					</div>
-					<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-					<div class="favorite favorite_left"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-						<div class="product_price">$410.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 5 -->
+				<!-- Product 5 -->
 
-			<div class="product-item women-s men-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_5.png" alt="">
+				<div class="product-item women-s men-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_5.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
+							<div class="product_price">$180.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-						<div class="product_price">$180.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 6 -->
+				<!-- Product 6 -->
 
-			<div class="product-item accessory">
-				<div class="product discount product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_6.png" alt="">
+				<div class="product-item accessory">
+					<div class="product discount product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_6.png" alt="">
+						</div>
+						<div class="favorite favorite_left"></div>
+						<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="#single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
+							<div class="product_price">$520.00<span>$590.00</span></div>
+						</div>
 					</div>
-					<div class="favorite favorite_left"></div>
-					<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="#single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-						<div class="product_price">$520.00<span>$590.00</span></div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 7 -->
+				<!-- Product 7 -->
 
-			<div class="product-item women-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_7.png" alt="">
+				<div class="product-item women-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_7.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
+							<div class="product_price">$610.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-						<div class="product_price">$610.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 8 -->
+				<!-- Product 8 -->
 
-			<div class="product-item accessory">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_8.png" alt="">
+				<div class="product-item accessory">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_8.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
+							<div class="product_price">$120.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-						<div class="product_price">$120.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 9 -->
+				<!-- Product 9 -->
 
-			<div class="product-item men-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_9.png" alt="">
+				<div class="product-item men-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_9.png" alt="">
+						</div>
+						<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+						<div class="favorite favorite_left"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
+							<div class="product_price">$410.00</div>
+						</div>
 					</div>
-					<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-					<div class="favorite favorite_left"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-						<div class="product_price">$410.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-			</div>
 
-			<!-- Product 10 -->
+				<!-- Product 10 -->
 
-			<div class="product-item men-s">
-				<div class="product product_filter">
-					<div class="product_image">
-						<img src="Assets/Main/images/product_10.png" alt="">
+				<div class="product-item men-s">
+					<div class="product product_filter">
+						<div class="product_image">
+							<img src="Assets/Main/images/product_10.png" alt="">
+						</div>
+						<div class="favorite"></div>
+						<div class="product_info">
+							<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
+							<div class="product_price">$180.00</div>
+						</div>
 					</div>
-					<div class="favorite"></div>
-					<div class="product_info">
-						<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-						<div class="product_price">$180.00</div>
-					</div>
+					<div class="red_button add_to_cart_button"><a  href="#">add to cart</a></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a  href="#">add to cart</a></div>
-			</div>
-		}
+			}
+		</div>
 	</div>
 </div>
-</div>
+<script src="~/Assets/JsFunction/wishList.js"></script>

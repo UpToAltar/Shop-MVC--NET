@@ -89,9 +89,10 @@ public class HomeController : Controller
             {
                 // Khởi tạo đối tượng ShoppingCart
                 cart = new ShoppingCart();
-                return View(new SuccessOrder(){Success = false});
+                return View(new SuccessOrder() { Success = false });
             }
 
+            // Create Order
             var order = new NetMVC.Models.Order()
             {
                 Code = "Order-" + Guid.NewGuid().ToString(),
@@ -120,7 +121,20 @@ public class HomeController : Controller
                     Price = p.Price,
                 });
             });
-            await _context.Orders.AddAsync(order);
+            //Create notification
+            var notification = new NetMVC.Models.Notification()
+            {
+                Id = new Guid(),
+                Description = $"User {model.UserName} has created an order with code {order.Code}",
+                Type = TypeNotification.Info,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                CreatedBy = model.UserName,
+                UpdatedBy = model.UserName,
+            };
+        
+        await _context.Notifications.AddAsync(notification);
+        await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
             var html = GetHtmlSendToCustomer(model, order,cart);
             await _emailSender.SendEmailAsync(model.Email, "Order Information", html);
@@ -144,6 +158,21 @@ public class HomeController : Controller
             order.IsConfirmByUser = true;
             order.Status = (int)StatusOrder.ConfirmedByUser;
             _context.Orders.Update(order);
+            
+            //Create notification
+            var notification = new NetMVC.Models.Notification()
+            {
+                Id = new Guid(),
+                Description = $"{email} has confirm an order with code {order.Code}",
+                Type = TypeNotification.Info,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                CreatedBy = email,
+                UpdatedBy = email,
+            };
+        
+            await _context.Notifications.AddAsync(notification);
+            
             await _context.SaveChangesAsync();
         }
         return View(succcess);

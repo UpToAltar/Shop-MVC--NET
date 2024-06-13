@@ -1,4 +1,12 @@
-﻿@model List<Product>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@model List<Product>
+@inject UserManager<AppUser> _userManager
+@inject AppDbContext _context
+@{
+	var user = await _userManager.GetUserAsync(User);
+}
+
 <!-- Best Sellers -->
 
 	<div class="best_sellers">
@@ -18,46 +26,44 @@
 							{
 								foreach (var product in Model)
 								{
+									var isWishList = false;
+									if (user != null)
+									{
+										isWishList = await _context.WishLists.AnyAsync( w => w.ProductId == product.Id.ToString() && w.UserId == user.Id);
+									}
 									<div class="owl-item product_slider_item">
 									<div class="product-item">
 										<div class="product_image">
-                                        	<img src="@product.Image" alt="">
-                                        </div>
+											<img src="@product.Image" alt="">
+										</div>
+										@if (user != null)
+                                        {
+                                        	@if (isWishList)
+                                        	{
+                                        		<div onclick="addWishList(this,'@user.Id','@product.Id.ToString()',false)" class="favorite favorite_left active">
+                                        		</div>
+                                        	}
+                                        	else
+                                        	{
+                                        		<div onclick="addWishList(this,'@user.Id','@product.Id.ToString()',true)" class="favorite favorite_left"></div>
+                                        	}
+                                        }
+                                        else
+                                        {
+                                        	<div class="favorite favorite_left"></div>
+                                        }
+										
                                         @if (product.IsNew)
                                         {
                                         	<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                         }
                                         @if (product.IsHot)
                                         {
-                                        	if (product.IsNew && product.IsSale)
-                                        	{
-                                        		<div class="favorite favorite_center active"></div>
-                                        	}
-                                        	else if(product.IsNew)
-                                        	{
-                                        		<div class="favorite active"></div>
-                                        	}
-                                        	else
-                                        	{
-                                        		<div class="favorite favorite_left active"></div>
-                                        	}
+                                        	<div class="favorite_hot">
+                                        		<img style="width: 100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrnTcvwzlQ8iJaaYBxiidpCfrV3chVzBjdrkntlmsoWAeIDwrk1RgSJXcK_ze5NBaky0&usqp=CAU" alt=""/>
+                                        	</div>
                                         }
-                                        else
-                                        {
-                                        	if (product.IsNew && product.IsSale)
-                                            {
-                                                <div class="favorite favorite_center"></div>
-                                            }
-                                            else if(product.IsNew)
-                                            {
-                                                <div class="favorite"></div>
-                                            }
-                                            else
-                                            {
-                                                <div class="favorite favorite_left"></div>
-                                            }
-                                        	
-                                        }
+                                        
                                         @if (product.IsSale)
                                         {
                                         	<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>SALE</span></div>

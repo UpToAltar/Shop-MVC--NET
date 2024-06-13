@@ -1170,7 +1170,7 @@ section
 .favorite
 {
 	position: absolute;
-	top: 15px;
+	bottom: 8px;
 	right: 15px;
 	color: #b9b4c7;
 	width: 17px;

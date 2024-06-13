@@ -33,10 +33,10 @@ namespace NetMVC.Areas.Product.Controllers
         // GET: News/Home
         public async Task<IActionResult> Index(string? searchString, int? page = 1)
         {
-            var product = _context.Products.OrderBy( n => n.Title).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+            var product = _context.Products.OrderByDescending( n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             if (!string.IsNullOrEmpty(searchString))
             {
-                product = _context.Products.Where(n => n.Title.Contains(searchString)).OrderBy(n => n.Title).ToPagedList(page ?? 1, ITEM_PER_PAGE);
+                product = _context.Products.Where(n => n.Title.Contains(searchString)).OrderByDescending(n => n.CreatedAt).ToPagedList(page ?? 1, ITEM_PER_PAGE);
             }
 
             foreach (var p in product)

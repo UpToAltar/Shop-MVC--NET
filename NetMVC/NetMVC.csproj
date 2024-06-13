@@ -42,7 +42,6 @@
     <ItemGroup>
       <Folder Include="Areas\Admin\Controllers\" />
       <Folder Include="Areas\Admin\Data\" />
-      <Folder Include="Areas\Admin\Models\" />
       <Folder Include="Areas\Admin\Views\Shared\" />
       <Folder Include="Areas\Advertisement\Data\" />
       <Folder Include="Areas\Category\Controllers\" />
@@ -50,6 +49,7 @@
       <Folder Include="Areas\Contact\Data\" />
       <Folder Include="Areas\News\Controllers\" />
       <Folder Include="Areas\News\Data\" />
+      <Folder Include="Areas\Notification\Data\" />
       <Folder Include="Areas\Order\Data\" />
       <Folder Include="Areas\Policy\Data\" />
       <Folder Include="Areas\Posts\Data\" />
@@ -63,6 +63,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Areas\Notification\Views\Home\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Notification\Views\Home\Delete.cshtml" />
+      <AdditionalFiles Include="Areas\Notification\Views\Home\Details.cshtml" />
+      <AdditionalFiles Include="Areas\Notification\Views\Home\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\Notification\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Notification\Views\_ViewImports.cshtml" />
       <AdditionalFiles Include="Areas\Order\Views\Home\Create.cshtml" />
       <AdditionalFiles Include="Areas\Order\Views\Home\Delete.cshtml" />
       <AdditionalFiles Include="Areas\Order\Views\Home\Details.cshtml" />

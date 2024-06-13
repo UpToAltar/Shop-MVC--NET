@@ -4,14 +4,17 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
+let bankingCount = document.querySelector('.banking').getAttribute('data');
+let cashCount = document.querySelector('.cash').getAttribute('data');
+let total = parseInt(bankingCount) + parseInt(cashCount);
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["Banking", "Cash"],
     datasets: [{
-      data: [55, 30, 15],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      data: [bankingCount/total*100, 100-bankingCount/total*100],
+      backgroundColor: ['#4e73df', '#1cc88a'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
