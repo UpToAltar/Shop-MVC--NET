@@ -14,20 +14,32 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly AppDbContext _context;
     public const int ITEM_PER_PAGE = 6;
-    public HomeController(ILogger<HomeController> logger, AppDbContext context)
+    private readonly IServiceScopeFactory _scopeFactory;
+    public HomeController(ILogger<HomeController> logger, AppDbContext context , IServiceScopeFactory scopeFactory)
     {
         _logger = logger;
         _context = context;
+        _scopeFactory = scopeFactory;
     }
     
-     public async Task<IActionResult> Index()
+
+    public async Task<IActionResult> Index()
     {
-        var categoriesModel = await _context.ProductCategories.Where(c => c.Icon != null).ToListAsync();
-        var productModel = await _context.Products.Where(p => p.IsHome && p.IsActive).ToListAsync();
-        var sliderModel = await _context.Advertisements.Where(a => a.IsActive).OrderBy(a => a.Position).ToListAsync();
+        var categoriesTask = GetCategoriesAsync();
+        var productsTask = GetProductsAsync();
+        var sliderTask = GetSlidersAsync();
+        var policyTask = GetPoliciesAsync();
+        var blogTask = GetBlogsAsync();
+
+        await Task.WhenAll(categoriesTask, productsTask, sliderTask, policyTask, blogTask);
+
+        var categoriesModel = await categoriesTask;
+        var productModel = await productsTask;
+        var sliderModel = await sliderTask;
+        var policyModel = await policyTask;
+        var blogModel = await blogTask;
+
         var bestSellerModel = productModel.Where(p => p.IsHot && p.IsActive).ToList();
-        var policyModel = await _context.Policies.Where(p => p.IsActive && p.Icon != null).ToListAsync();
-        var blogModel = await _context.News.Where(b => b.IsActive).Take(3).ToListAsync();
 
         var model = new IndexMain()
         {
@@ -38,17 +50,72 @@ public class HomeController : Controller
             policyModel = policyModel,
             blogModel = blogModel
         };
+
         return View(model);
     }
+
+    private async Task<List<ProductCategory>> GetCategoriesAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.ProductCategories.Where(c => c.Icon != null).ToListAsync();
+        }
+    }
+
+    private async Task<List<Product>> GetProductsAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.Products.Where(p => p.IsHome && p.IsActive).ToListAsync();
+        }
+    }
+
+    private async Task<List<Advertisement>> GetSlidersAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.Advertisements.Where(a => a.IsActive).OrderBy(a => a.Position).ToListAsync();
+        }
+    }
+
+    private async Task<List<Policy>> GetPoliciesAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.Policies.Where(p => p.IsActive && p.Icon != null).ToListAsync();
+        }
+    }
+
+    private async Task<List<News>> GetBlogsAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.News.Where(b => b.IsActive).Take(3).ToListAsync();
+        }
+    }
+
     public IActionResult About()
     {
         return View();
     }
     public async Task<IActionResult> Shop()
     {
-        var policyModel = await _context.Policies.Where(p => p.IsActive && p.Icon != null).ToListAsync();
-        var pCate = await _context.ProductCategories.ToListAsync();
-        var product = await _context.Products.Where(p => p.IsActive).ToListAsync();
+        
+        var policyTask = GetPoliciesAsync();
+        var pCateTask = GetCategoriesAsync();
+        var productTask = GetProductsActiveAsync();
+        
+        await Task.WhenAll(policyTask, pCateTask, productTask);
+
+
+        var policyModel = await policyTask;
+        var pCate = await pCateTask;
+        var product = await productTask;
         var model = new IndexCate()
         {
             policyModel = policyModel,
@@ -56,6 +123,15 @@ public class HomeController : Controller
             product = product
         };
         return View(model);
+    }
+    
+    private async Task<List<Product>> GetProductsActiveAsync()
+    {
+        using (var scope = _scopeFactory.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            return await context.Products.Where(p => p.IsActive).ToListAsync();
+        }
     }
     
     public async Task<IActionResult> Blog(string? searchString, int? page = 1)

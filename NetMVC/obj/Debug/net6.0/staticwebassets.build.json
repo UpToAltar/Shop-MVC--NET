@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GCUkS4W6gFVlacIMD+KoMsw8IaDQ08iCHGXkwC+Kwt4=",
+  "Hash": "VXY1tWGYA2DxiYOB/4ODRlyetdaXfTSFg0/FGJ8J4VE=",
   "Source": "NetMVC",
   "BasePath": "_content/NetMVC",
   "Mode": "Default",
@@ -35052,6 +35052,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\Main\\images\\desc_3.jpg"
+    },
+    {
+      "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Main\\images\\favicon.ico",
+      "SourceId": "NetMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\",
+      "BasePath": "_content/NetMVC",
+      "RelativePath": "Assets/Main/images/favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Main\\images\\favicon.ico"
     },
     {
       "Identity": "D:\\TeamGame\\NetMVC\\NetMVC\\wwwroot\\Assets\\Main\\images\\map_marker.png",

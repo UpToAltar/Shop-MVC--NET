@@ -21,7 +21,7 @@ namespace NetMVC.Areas.Admin.Controllers
             _context = context;
         }
         
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexHome()
         {
             var orders = await _context.Orders.ToListAsync();
             if (orders == null)

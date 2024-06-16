@@ -151,6 +151,8 @@ public class UserNormalController : Controller
             var user = await _userManager.GetUserAsync(User);
             var order = await _context.Orders
                 .FirstOrDefaultAsync(o => o.Id.ToString() == id && o.AppUserIdFK == user.Id);
+            
+            
             if (order == null)
             {
                 StatusMessage = "Error: Order not found.";
